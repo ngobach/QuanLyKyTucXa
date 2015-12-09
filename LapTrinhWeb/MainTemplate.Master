@@ -1,0 +1,62 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="~/MainTemplate.Master.cs" Inherits="LapTrinhWeb.MainTemplate" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="vi">
+<head runat="server">
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+    <link rel="stylesheet" href="styles/bootstrap.css" />
+    <link rel="stylesheet" href="styles/bootstrap-theme.css" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <asp:ContentPlaceHolder ID="StyleSection" runat="server" />
+</head>
+<body>
+    <div class="container">
+        <% if (!HideNav) { %>
+        <nav class="navbar navbar-<%=InverseNavBar?"inverse":"default" %>">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a runat="server" class="navbar-brand" href="~/Default.aspx">Quản lý KTX</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="<%=GetClass("QLUser.aspx") %>"><a runat="server" href="~/QLUser.aspx">Quản lý User</a></li>
+                        <li class="<%=GetClass("QLSinhVien.aspx") %>"><a runat="server" href="~/QLSinhVien.aspx">Quản lý sinh viên</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if (Session["Username"] == null) {  %>
+                        <li><a runat="server" href="~/Login.aspx">Đăng nhập</a></li>
+                        <% } else { %>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Xin chào <b><%=Session["Username"]%></b> <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a runat="server" href="#">Sửa hồ sơ</a></li>
+                                <li><a runat="server" href="~/Logout.aspx">Đăng xuất</a></li>
+                            </ul>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <% } %>
+        <asp:ContentPlaceHolder ID="ContentSection" runat="server" />
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Đề tài Quản lý kí túc xá trường Đại Học</p>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="scripts/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="scripts/jquery-1.9.1.intellisense.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.js"></script>
+    <asp:ContentPlaceHolder ID="ScriptSection" runat="server" />
+</body>
+</html>
