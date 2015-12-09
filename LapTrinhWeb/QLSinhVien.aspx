@@ -76,7 +76,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>MaSV</label>
+                            <label>Mã sinh viên</label>
                             <asp:TextBox ID="txtMaSV" runat="server" CssClass="form-control" />
                         </div>
                         <div class="form-group">

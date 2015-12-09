@@ -7,15 +7,9 @@ using System.Data.SqlClient;
 
 namespace LapTrinhWeb.App_Code
 {
-    public class DBSinhVien : LapTrinhWeb.App_Code.DB
+    public class DBSinhVien : DB
     {
-
-        public class SinhVien
-        {
-            public String masv, hoten, gioitinh, quequan, makhoa, malop;
-        }
-
-        public static DataTable Select()
+        public static DataTable SelectAll()
         {
             DataTable table = new DataTable();
             SqlCommand cmd = new SqlCommand("SinhVien_DanhSach", GetConnection());

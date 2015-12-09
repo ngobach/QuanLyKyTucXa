@@ -16,6 +16,11 @@ namespace LapTrinhWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             Master.HideNav = true;
+            if (Session["Username"] != null)
+            {
+                Response.BufferOutput = true;
+                Response.Redirect("~/Default.aspx");
+            }
         }
 
         protected void DoLogin(object sender, EventArgs e)

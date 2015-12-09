@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using LapTrinhWeb.App_Code;
 using System.Data.SqlClient;
 using System.Data;
-
+using LapTrinhWeb.Models;
 
 namespace LapTrinhWeb
 {
@@ -54,6 +54,23 @@ namespace LapTrinhWeb
             return true;
         }
 
+        private void LoadUser(String uid)
+        {
+            User user = DBUser.GetUser(uid);
+            if (user == null) return;
+
+            btnAdd.Visible = false;
+            btnUpdate.Visible = true;
+            btnCancel.Visible = true;
+
+            ViewState.Add("Username", uid);
+            txtUsername.Text = user.UID;
+            txtFullName.Text = user.FullName;
+            txtNgaySinh.Text = user.DOB;
+            txtQueQuan.Text = user.Addr;
+            txtUsername.ReadOnly = true;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             // Login required
@@ -68,6 +85,9 @@ namespace LapTrinhWeb
                 // Load data
                 BindGrid();
                 ResetForm();
+                if (Request.QueryString.AllKeys.Contains("uid")){
+                    LoadUser(Request.QueryString["uid"]);
+                }
             }
         }
 
@@ -137,7 +157,7 @@ namespace LapTrinhWeb
             btnUpdate.Visible = false;
             btnCancel.Visible = false;
 
-            ViewState.Remove("ID");
+            ViewState.Remove("Username");
             txtUsername.Text = "";
             txtFullName.Text = "";
             txtNgaySinh.Text = "";

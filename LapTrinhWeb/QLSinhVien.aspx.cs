@@ -15,7 +15,7 @@ namespace LapTrinhWeb
     {
         private void BindGrid()
         {
-            Grid.DataSource = DBSinhVien.Select();
+            Grid.DataSource = DBSinhVien.SelectAll();
             Grid.DataBind();
         }
         private bool ValidateForm()

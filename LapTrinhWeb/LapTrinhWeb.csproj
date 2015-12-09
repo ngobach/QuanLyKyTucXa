@@ -63,6 +63,7 @@
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="QLSinhVien.aspx" />
+    <Content Include="QLPhong.aspx" />
     <Content Include="QLUser.aspx" />
     <Content Include="styles\bootstrap-theme.css" />
     <Content Include="styles\bootstrap.css" />
@@ -83,6 +84,7 @@
     </Compile>
     <Compile Include="App_Code\DB.cs" />
     <Compile Include="App_Code\DBSinhVien.cs" />
+    <Compile Include="App_Code\DBPhong.cs" />
     <Compile Include="App_Code\DBUser.cs" />
     <Compile Include="App_Code\RowSelectHandle.cs" />
     <Compile Include="Default.aspx.cs">
@@ -120,6 +122,13 @@
     </Compile>
     <Compile Include="QLSinhVien.aspx.designer.cs">
       <DependentUpon>QLSinhVien.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QLPhong.aspx.cs">
+      <DependentUpon>QLPhong.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QLPhong.aspx.designer.cs">
+      <DependentUpon>QLPhong.aspx</DependentUpon>
     </Compile>
     <Compile Include="QLUser.aspx.cs">
       <DependentUpon>QLUser.aspx</DependentUpon>

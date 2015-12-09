@@ -4,16 +4,23 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using System.Data.SqlClient;
+using LapTrinhWeb.Models;
+
+namespace LapTrinhWeb.Models
+{
+    public class User
+    {
+        public String UID;
+        public String FullName;
+        public String DOB;
+        public String Addr;
+    }
+}
 
 namespace LapTrinhWeb.App_Code
 {
-    public class DBUser : LapTrinhWeb.App_Code.DB
+    public class DBUser : DB
     {
-
-        public class SinhVien
-        {
-            public String masv, hoten, gioitinh, quequan, makhoa, malop;
-        }
 
         public static DataTable SelectAll()
         {
@@ -24,7 +31,25 @@ namespace LapTrinhWeb.App_Code
             adapter.Fill(table);
             return table;
         }
-        
+
+        public static User GetUser(String uid)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [User] WHERE [Username]=@uid",GetConnection());
+            cmd.Parameters.AddWithValue("@uid", uid);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (!reader.Read())
+            {
+                reader.Close();
+                return null;
+            }
+            User user = new User();
+            user.UID = uid;
+            user.FullName = (String)reader["HoTen"];
+            user.DOB = ((DateTime)reader["NgaySinh"]).ToString("yyyy-MM-dd");
+            user.Addr = (String)reader["QueQuan"];
+            reader.Close();
+            return user;
+        }
 
         public static void Insert(String username, String password,String hoten,DateTime ngaysinh, String quequan)
         {
