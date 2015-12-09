@@ -2,6 +2,7 @@
 <asp:Content ContentPlaceHolderID="ContentSection" runat="server">
     <div class="well well-sm text-center">
         <h2>Trường đại học Điện Lực Hà Nội</h2>
+        <img src="/images/logo.png" style="width: 200px"/>
         <h3>Đề tài: Quản lý ký túc xá trường đại học</h3>
     </div>
     <div class="well well-sm text-center">

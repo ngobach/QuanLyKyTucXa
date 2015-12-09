@@ -17,7 +17,7 @@ namespace LapTrinhWeb
         }
         protected string GetClass(String url)
         {
-            return Request.Url.AbsolutePath.EndsWith(url)?"active":"";
+            return Request.Url.AbsoluteUri.EndsWith(url)?"active":"";
         }
     }
 }
