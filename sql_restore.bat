@@ -1,6 +1,6 @@
 @echo off
 echo -- RESTORE DATABASE --
-set DATABASENAME=SinhVienWeb
+set DATABASENAME=QLKTX
 set BACKUPFILENAME=%DATABASENAME%.bak
 set SERVERNAME=(local)
 
