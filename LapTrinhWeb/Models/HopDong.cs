@@ -5,10 +5,10 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using LapTrinhWeb.Models;
+using LapTrinhWeb.App_Code;
 
 namespace LapTrinhWeb.Models
 {
-    using LapTrinhWeb.App_Code;
     public class HopDong
     {
         public string MaHopDong;
@@ -16,7 +16,6 @@ namespace LapTrinhWeb.Models
         public DateTime NgayHetHan;
         public int Phong;
         public bool DaKetThuc;
-
 
         public static DataTable All()
         {
@@ -26,6 +25,29 @@ namespace LapTrinhWeb.Models
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(table);
             return table;
+        }
+        public static DataTable List() {
+            DataTable table = new DataTable();
+            SqlCommand cmd = new SqlCommand("SELECT MaHopDong FROM HopDong", DB.GetConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(table);
+            return table;
+        }
+
+        public static int TongSo()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM HopDong", DB.GetConnection());
+            return (Int32)cmd.ExecuteScalar();
+        }
+        public static int SoHetHan()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM HopDong WHERE NgayHetHan < GETDATE()", DB.GetConnection());
+            return (Int32)cmd.ExecuteScalar();
+        }
+        public static int SoKetThuc()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM HopDong WHERE DaKetThuc=1", DB.GetConnection());
+            return (Int32)cmd.ExecuteScalar();
         }
 
         public DataTable GetSinhVien()

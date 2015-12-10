@@ -34,8 +34,10 @@
                         <HeaderStyle Width="10%" CssClass="text-center" />
                         <ItemStyle CssClass="text-center" />
                         <ItemTemplate>
-                            <asp:Button ID="btnEdit" runat="server" Text="Sửa" CommandName="Sua" CssClass="btn btn-sm btn-primary" CommandArgument='<%# Eval("Username") %>'/>
-                            <asp:Button ID="btnDelete" runat="server" Text="Xóa" CommandName="Xoa" CssClass="btn btn-sm btn-danger" CommandArgument='<%# Eval("Username") %>'/>
+                            <div class="btn-group btn-group-justified">
+                                <asp:LinkButton ID="btnEdit" runat="server" Text="Sửa" CommandName="Sua" CssClass="btn btn-sm btn-primary" CommandArgument='<%# Eval("Username") %>'/>
+                                <asp:LinkButton ID="btnDelete" runat="server" Text="Xóa" CommandName="Xoa" CssClass="btn btn-sm btn-danger" CommandArgument='<%# Eval("Username") %>'/>
+                            </div>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

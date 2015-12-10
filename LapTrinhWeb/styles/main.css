@@ -103,3 +103,27 @@ body {
     background: #FFFFFF;
     border: solid 1px #CCC;
 }
+
+/*  CHART
+*******************************/
+
+.chart {
+  position: relative;
+  display: inline-block;
+  width: 110px;
+  height: 110px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.chart > span {
+    position: relative;
+    top: 24px;
+    font-size: 28pt;
+}
+
+.chart canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

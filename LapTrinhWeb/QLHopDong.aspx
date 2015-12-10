@@ -55,8 +55,11 @@
                         <HeaderStyle Width="20%" CssClass="text-center" />
                         <ItemStyle CssClass="text-center" />
                         <ItemTemplate>
-                            <asp:Button ID="btnEdit" runat="server" Text="Cập nhật" CommandName="CapNhat" CssClass="btn btn-sm btn-primary" CommandArgument='<%# Eval("MaHopDong") %>'/>
-                            <asp:Button ID="btnDelete" runat="server" Text="Xóa" CommandName="Xoa" CssClass="btn btn-sm btn-danger" CommandArgument='<%# Eval("MaHopDong") %>'/>
+                            <div class="btn-group btn-group-justified">
+                                <asp:LinkButton ID="btnHoaDon" runat="server" Text="Hóa đơn" CommandName="HoaDon" CssClass="btn btn-sm btn-default" CommandArgument='<%# Eval("MaHopDong") %>'/>
+                                <asp:LinkButton ID="btnEdit" runat="server" Text="Cập nhật" CommandName="CapNhat" CssClass="btn btn-sm btn-primary" CommandArgument='<%# Eval("MaHopDong") %>'/>
+                                <asp:LinkButton ID="btnDelete" runat="server" Text="Xóa" CommandName="Xoa" CssClass="btn btn-sm btn-danger" CommandArgument='<%# Eval("MaHopDong") %>'/>
+                            </div>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

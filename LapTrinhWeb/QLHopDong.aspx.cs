@@ -69,6 +69,11 @@ namespace LapTrinhWeb
                 Response.BufferOutput = true;
                 Response.Redirect("~/CTHopDong.aspx?id="+e.CommandArgument.ToString());
             }
+            else if (e.CommandName.Equals("HoaDon"))
+            {
+                Response.BufferOutput = true;
+                Response.Redirect("~/QLHoaDon.aspx?mahd=" + e.CommandArgument.ToString());
+            }
         }
 
         protected void Grid_PageIndexChanging(object sender, GridViewPageEventArgs e)

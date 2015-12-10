@@ -60,10 +60,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CTHoaDon.aspx" />
     <Content Include="images\logo.png" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="CTHopDong.aspx" />
+    <Content Include="QLHoaDon.aspx" />
+    <Content Include="scripts\jquery.easypiechart.js" />
+    <Content Include="TKHoaDon.aspx" />
+    <Content Include="TKHopDong.aspx" />
     <Content Include="QLHopDong.aspx" />
     <Content Include="QLSinhVien.aspx" />
     <Content Include="QLPhong.aspx" />
@@ -76,9 +81,12 @@
     <Content Include="scripts\bootstrap.js" />
     <Content Include="MainTemplate.Master" />
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\ZIP.pubxml" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="scripts\jquery-1.9.1.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\Alert.cs" />
@@ -86,7 +94,15 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="App_Code\DB.cs" />
-    <Compile Include="App_Code\DBHopDong.cs" />
+    <Compile Include="CTHoaDon.aspx.cs">
+      <DependentUpon>CTHoaDon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CTHoaDon.aspx.designer.cs">
+      <DependentUpon>CTHoaDon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HoaDon.cs" />
+    <Compile Include="Models\HopDong.cs" />
     <Compile Include="App_Code\DBSinhVien.cs" />
     <Compile Include="App_Code\DBPhong.cs" />
     <Compile Include="App_Code\DBUser.cs" />
@@ -126,6 +142,27 @@
     </Compile>
     <Compile Include="CTHopDong.aspx.designer.cs">
       <DependentUpon>CTHopDong.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="QLHoaDon.aspx.cs">
+      <DependentUpon>QLHoaDon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QLHoaDon.aspx.designer.cs">
+      <DependentUpon>QLHoaDon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TKHoaDon.aspx.cs">
+      <DependentUpon>TKHoaDon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TKHoaDon.aspx.designer.cs">
+      <DependentUpon>TKHoaDon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TKHopDong.aspx.cs">
+      <DependentUpon>TKHopDong.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TKHopDong.aspx.designer.cs">
+      <DependentUpon>TKHopDong.aspx</DependentUpon>
     </Compile>
     <Compile Include="QLHopDong.aspx.cs">
       <DependentUpon>QLHopDong.aspx</DependentUpon>
