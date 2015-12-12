@@ -127,3 +127,15 @@ body {
   top: 0;
   left: 0;
 }
+
+.btnSearch {
+    margin-top: 25px;
+}
+
+.timkiem {
+    padding-left:0;
+}
+
+    .timkiem div {
+        padding-left: 0;
+    }

@@ -4,6 +4,21 @@
     <div class="section">
         <div class="well well-sm">
             <form runat="server">
+                <div class="container timkiem">
+                <div class="form-group col-lg-4">
+                    <label>Nhập mã sinh viên cần tìm:</label>
+                    <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" />
+                </div>
+                <div class="col-lg-1 btnSearch">
+                    <asp:Button runat="server" ID="btnSearch" Text="Tìm kiếm"
+                             CssClass="btn btn-primary" OnClick="btnSearch_Click" />
+
+                </div>
+                <div class="col-lg-1 btnSearch">
+                    <asp:Button runat="server" ID="btnShowAll" Text="Hiển thị tất cả"
+                            CssClass="btn btn-danger" OnClick="btnShowAll_Click" />
+                </div>
+                </div>
                 <asp:GridView runat="server" ID="Grid" CssClass="table table-hover table-bordered"
                     AllowPaging="True" PageSize="5" AutoGenerateColumns="False"
                     OnRowCommand="Grid_RowCommand"

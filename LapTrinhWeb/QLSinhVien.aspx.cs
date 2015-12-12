@@ -8,6 +8,7 @@ using LapTrinhWeb.App_Code;
 using System.Data.SqlClient;
 using System.Data;
 using System.Text.RegularExpressions;
+using System.Data.SqlClient;
 
 namespace LapTrinhWeb
 {
@@ -64,6 +65,7 @@ namespace LapTrinhWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            btnShowAll.Visible = false;
             // Login required
             if (!HttpContext.Current.IsDebuggingEnabled && Session["Username"] == null)
             {
@@ -157,6 +159,7 @@ namespace LapTrinhWeb
             txtQueQuan.Text = "";
             txtLop.Text = "";
             txtKhoa.Text = "";
+            txtSearch.Text = "";
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
@@ -179,6 +182,49 @@ namespace LapTrinhWeb
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             ResetForm();
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == "")
+            {
+                alert = new Alert("Eror", "Lỗi", "Chưa nhập mã sinh viên");
+                BindGrid();
+                ResetForm();
+            }
+            else 
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM SinhVien WHERE MaSV=@masv",DB.GetConnection());
+                cmd.Parameters.AddWithValue("@masv", txtSearch.Text);
+                SqlDataReader r = cmd.ExecuteReader();
+                if (r.Read() == false)
+                {
+                    alert = new Alert("EROR", "Lỗi", "Mã sinh viên vừa nhập không tồn tại");
+                    Grid.Visible = false;
+                    ResetForm();
+                    btnShowAll.Visible = true;
+                }
+                else
+                {
+                    SqlCommand sqlcmd = new SqlCommand("SELECT * FROM SinhVien WHERE MaSV=@masv", DB.GetConnection());
+                    sqlcmd.Parameters.AddWithValue("masv", txtSearch.Text);
+                    SqlDataAdapter da = new SqlDataAdapter(sqlcmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    DataView dv = new DataView(dt);
+                    Grid.DataSource = dv;
+                    Grid.DataBind();
+                    ResetForm();
+                    btnShowAll.Visible = true;
+                }
+            }
+        }
+
+        protected void btnShowAll_Click(object sender, EventArgs e)
+        {
+            BindGrid();
+            Grid.Visible = true;
+            btnShowAll.Visible = false;
         }
         
     }
