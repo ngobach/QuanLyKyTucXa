@@ -23,7 +23,7 @@
                     <h3>Số hóa đơn đã thanh toán:</h3>
                     <h1><asp:Label runat="server" ID="lblDaTT" CssClass="text-success" Text=""/></h1>
                     <asp:Button runat="server" ID="btnDaTT" Text="Chi tiết"
-                            CssClass="btn btn-primary" />
+                            CssClass="btn btn-primary" OnClick="btnDaTT_Click"/>
                 </div>
             </div>
             

@@ -52,12 +52,20 @@ namespace LapTrinhWeb
             Grid.DataBind();
         }
 
+        private void BindDaTT()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT *,(TienPhong+TienDien+TienNuoc+PhuPhi) AS Tong FROM HoaDon WHERE DaThanhToan='True'", DB.GetConnection());
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            Grid.DataSource = dt;
+            Grid.DataBind();
+        }
+
         protected void btnTong_Click(object sender, EventArgs e)
         {
-            //Response.Redirect("QLHoadon.aspx");
-            
+            ViewState["Mode"] = null;
             BindTong();
-            Response.Redirect("TKHoaDon.aspx?dk=all");
         }
 
 
@@ -65,13 +73,24 @@ namespace LapTrinhWeb
         protected void Grid_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             Grid.PageIndex = e.NewPageIndex;
-            BindChuatt();
+            if ((String)ViewState["Mode"] == "ChuaTT")
+                BindChuatt();
+            else if ((String)ViewState["Mode"] == "DaTT")
+                BindDaTT();
+            else
+                BindTong();
         }
 
         protected void btnChuaTT_Click(object sender, EventArgs e)
         {
-            Response.Redirect("TKHoaDon.aspx?dk=chuatt");
+            ViewState["Mode"] = "ChuaTT";
             BindChuatt();
+        }
+
+        protected void btnDaTT_Click(object sender, EventArgs e)
+        {
+            ViewState["Mode"] = "DaTT";
+            BindDaTT();
         }
     }
 }
