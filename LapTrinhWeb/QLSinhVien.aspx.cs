@@ -211,8 +211,7 @@ namespace LapTrinhWeb
                     SqlDataAdapter da = new SqlDataAdapter(sqlcmd);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
-                    DataView dv = new DataView(dt);
-                    Grid.DataSource = dv;
+                    Grid.DataSource = dt;
                     Grid.DataBind();
                     ResetForm();
                     btnShowAll.Visible = true;

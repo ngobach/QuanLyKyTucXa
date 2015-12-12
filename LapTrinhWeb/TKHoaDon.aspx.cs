@@ -8,6 +8,7 @@ using LapTrinhWeb.App_Code;
 using System.Data.SqlClient;
 using System.Data;
 using LapTrinhWeb.Models;
+using System.Diagnostics;
 
 namespace LapTrinhWeb
 {
@@ -31,6 +32,11 @@ namespace LapTrinhWeb
                 lblChuaTT.Text = Convert.ToString(chuatt);
                 lblDaTT.Text = Convert.ToString(tong-chuatt);
             }
+        }
+
+        protected void btnTong_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("QLHoadon.aspx");
         }
     }
 }
