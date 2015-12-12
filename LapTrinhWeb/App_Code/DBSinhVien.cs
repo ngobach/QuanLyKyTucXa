@@ -30,7 +30,7 @@ namespace LapTrinhWeb.App_Code
             cmd.Parameters.AddWithValue("@gioitinh", gioitinh);
             cmd.Parameters.AddWithValue("@quequan", quequan);
             cmd.Parameters.AddWithValue("@lop", lop);
-            cmd.Parameters.AddWithValue("@khoa", lop);
+            cmd.Parameters.AddWithValue("@khoa", khoa);
             cmd.ExecuteNonQuery();
         }
 
