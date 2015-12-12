@@ -69,16 +69,6 @@
                             <%# ((bool)Eval("DaThanhToan"))?"<span class=\"text-success\">Đã thanh toán</span>":"<span class=\"text-danger\">Chưa thanh toán</span>" %>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Thao tác">
-                        <HeaderStyle Width="20%" CssClass="text-center" />
-                        <ItemStyle CssClass="text-center" />
-                        <ItemTemplate>
-                            <div class="btn-group btn-group-justified">
-                                <asp:LinkButton ID="btnEdit" runat="server" Text="Cập nhật" CommandName="CapNhat" CssClass="btn btn-sm btn-primary" CommandArgument='<%# Eval("ID") %>'/>
-                                <asp:LinkButton ID="btnDelete" runat="server" Text="Xóa" CommandName="Xoa" CssClass="btn btn-sm btn-danger" CommandArgument='<%# Eval("ID") %>'/>
-                            </div>
-                        </ItemTemplate>
-                    </asp:TemplateField>
                 </Columns>
             </asp:GridView>
             </div>
