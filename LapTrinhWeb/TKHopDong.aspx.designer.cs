@@ -22,6 +22,15 @@ namespace LapTrinhWeb {
         protected global::System.Web.UI.WebControls.Label lblTong;
         
         /// <summary>
+        /// btnTong control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTong;
+        
+        /// <summary>
         /// lblHH control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace LapTrinhWeb {
         protected global::System.Web.UI.WebControls.Label lblHH;
         
         /// <summary>
+        /// btnChuaTT control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnChuaTT;
+        
+        /// <summary>
         /// lblKetThuc control.
         /// </summary>
         /// <remarks>
@@ -38,5 +56,23 @@ namespace LapTrinhWeb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblKetThuc;
+        
+        /// <summary>
+        /// btnDaTT control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDaTT;
+        
+        /// <summary>
+        /// Grid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView Grid;
     }
 }

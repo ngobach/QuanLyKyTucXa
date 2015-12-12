@@ -52,6 +52,8 @@
                     <div class="form-group">
                         <label>Thao tác</label><br />
                         <div class="btn-group">
+                            <asp:Button runat="server" ID="btnSearch" Text="Tìm kiếm"
+                                OnClick="btnSearch_Click" CssClass="btn btn-danger" />
                             <asp:Button runat="server" ID="btnAdd" Text="Thêm Mới"
                                 OnClick="btnAdd_Click" CssClass="btn btn-primary" />
                             <asp:Button runat="server" ID="btnUpdate" Text="Cập nhật"

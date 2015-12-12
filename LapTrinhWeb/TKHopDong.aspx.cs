@@ -28,7 +28,64 @@ namespace LapTrinhWeb
                 lblTong.Text = Convert.ToString(HopDong.TongSo());
                 lblHH.Text = Convert.ToString(HopDong.SoHetHan());
                 lblKetThuc.Text = Convert.ToString(HopDong.SoKetThuc());
+                BindTong();
             }
+        }
+
+        protected void Grid_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("HoaDon"))
+            {
+                Response.BufferOutput = true;
+                Response.Redirect("~/QLHoaDon.aspx?mahd=" + e.CommandArgument.ToString());
+            }
+        }
+
+        private void BindTong()
+        {
+            Grid.DataSource = HopDong.All();
+            Grid.DataBind();
+        }
+
+        private void BindChuakt()
+        {
+            Grid.DataSource = HopDong.Chuakt();
+            Grid.DataBind();
+        }
+
+        private void BindDakt()
+        {
+            Grid.DataSource = HopDong.Dakt();
+            Grid.DataBind();
+        }
+
+        protected void btnTong_Click(object sender, EventArgs e)
+        {
+            ViewState["Mode"] = null;
+            BindTong();
+        }
+
+        protected void btnChuakt_Click(object sender, EventArgs e)
+        {
+            ViewState["Mode"] = "Chuakt";
+            BindChuakt();
+        }
+
+        protected void btnDakt_Click(object sender, EventArgs e)
+        {
+            ViewState["Mode"] = "Dakt";
+            BindDakt();
+        }
+
+        protected void Grid_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            Grid.PageIndex = e.NewPageIndex;
+            if ((String)ViewState["Mode"] == "ChuaTT")
+                BindChuakt();
+            else if ((String)ViewState["Mode"] == "DaTT")
+                BindDakt();
+            else
+                BindTong();
         }
     }
 }

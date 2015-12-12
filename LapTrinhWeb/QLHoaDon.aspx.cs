@@ -118,6 +118,31 @@ namespace LapTrinhWeb
             Grid.PageIndex = e.NewPageIndex;
             BindGrid();
         }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT * FROM HoaDon WHERE Nam=@nam AND Thang=@thang AND MaHopDong=@mahd", DB.GetConnection());
+            cmd.Parameters.AddWithValue("@nam", Convert.ToInt32(dropNam.SelectedValue));
+            cmd.Parameters.AddWithValue("@thang", Convert.ToInt32(dropThang.SelectedValue));
+            cmd.Parameters.AddWithValue("@mahd", dropMaHD.SelectedValue);
+            SqlDataReader r = cmd.ExecuteReader();
+            if (r.Read() == false)
+            {
+                alert = new Alert("warning", "Lỗi", "Không tìm thấy hóa đơn phù hợp!");
+            }
+            else
+            {
+                SqlCommand sqlcmd = new SqlCommand("SELECT *,(TienPhong+TienDien+TienNuoc+PhuPhi) AS Tong FROM HoaDon WHERE Nam=@nam AND Thang=@thang AND MaHopDong=@mahd", DB.GetConnection());
+                sqlcmd.Parameters.AddWithValue("@nam", Convert.ToInt32(dropNam.SelectedValue));
+                sqlcmd.Parameters.AddWithValue("@thang", Convert.ToInt32(dropThang.SelectedValue));
+                sqlcmd.Parameters.AddWithValue("@mahd", dropMaHD.SelectedValue);
+                SqlDataAdapter da = new SqlDataAdapter(sqlcmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                Grid.DataSource = dt;
+                Grid.DataBind();
+            }
+        }
    
     }
 }

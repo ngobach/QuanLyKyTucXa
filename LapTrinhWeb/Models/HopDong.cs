@@ -17,6 +17,24 @@ namespace LapTrinhWeb.Models
         public int Phong;
         public bool DaKetThuc;
 
+        public static DataTable Chuakt()
+        { 
+            DataTable table = new DataTable();
+            SqlCommand cmd = new SqlCommand("SELECT HopDong.*, (SELECT COUNT(*) FROM CTHopDong WHERE CTHopDong.MaHopDong = HopDong.MaHopDong) AS SoNguoi, Phong.TenPhong, CASE WHEN HopDong.NgayHetHan < GETDATE() THEN 1 ELSE 0 END AS DaHetHan FROM HopDong JOIN Phong ON Phong.ID = HopDong.Phong WHERE DaKetThuc='False'", DB.GetConnection());
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(table);
+            return table;
+        }
+
+        public static DataTable Dakt()
+        {
+            DataTable table = new DataTable();
+            SqlCommand cmd = new SqlCommand("SELECT HopDong.*, (SELECT COUNT(*) FROM CTHopDong WHERE CTHopDong.MaHopDong = HopDong.MaHopDong) AS SoNguoi, Phong.TenPhong, CASE WHEN HopDong.NgayHetHan < GETDATE() THEN 1 ELSE 0 END AS DaHetHan FROM HopDong JOIN Phong ON Phong.ID = HopDong.Phong WHERE DaKetThuc='True'", DB.GetConnection());
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(table);
+            return table;
+        }
+
         public static DataTable All()
         {
             DataTable table = new DataTable();

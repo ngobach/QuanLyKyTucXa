@@ -94,6 +94,7 @@ namespace LapTrinhWeb
         private void LoadForm(GridViewRow row,String id)
         {
             btnAdd.Visible = false;
+            btnSearch.Visible = false;
             btnUpdate.Visible = true;
             btnCancel.Visible = true;
 
@@ -104,6 +105,7 @@ namespace LapTrinhWeb
         private void ResetForm()
         {
             btnAdd.Visible = true;
+            btnSearch.Visible = true;
             btnUpdate.Visible = false;
             btnCancel.Visible = false;
 
@@ -130,6 +132,37 @@ namespace LapTrinhWeb
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             ResetForm();
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (txtName.Text == "")
+            {
+                alert = new Alert("warning", "Lỗi", "Chưa nhập nội dung tìm kiếm!");
+                BindGrid();
+                ResetForm();
+            }
+            else
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Phong WHERE TenPhong=@ten", DB.GetConnection());
+                cmd.Parameters.AddWithValue("@ten", txtName.Text);
+                SqlDataReader r = cmd.ExecuteReader();
+                if (r.Read() == false)
+                {
+                    alert = new Alert("warning", "Lỗi", "Không tìm thấy phòng phù hợp!");
+                }
+                else
+                {
+                    SqlCommand sqlcmd = new SqlCommand("SELECT * FROM Phong WHERE TenPhong=@ten", DB.GetConnection());
+                    sqlcmd.Parameters.AddWithValue("@ten", txtName.Text);
+                    SqlDataAdapter da = new SqlDataAdapter(sqlcmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    Grid.DataSource = dt;
+                    Grid.DataBind();
+                }
+            }
+            
         }
         
     }

@@ -31,20 +31,22 @@ namespace LapTrinhWeb
                 lblTong.Text = Convert.ToString(tong);
                 lblChuaTT.Text = Convert.ToString(chuatt);
                 lblDaTT.Text = Convert.ToString(tong-chuatt);
+                BindTong();
             }
         }
         private void BindTong()
         {
-            if (ViewState["MaHD"] == null)
-                Grid.DataSource = HoaDon.All();
-            else
-                Grid.DataSource = HoaDon.All((String)ViewState["MaHD"]);
+            SqlCommand cmd = new SqlCommand("SELECT HopDong.*, HoaDon.*, (TienPhong+TienDien+TienNuoc+PhuPhi) AS Tong FROM HoaDon,HopDong WHERE HoaDon.MaHopDong = Hopdong.MaHopDong", DB.GetConnection());
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            Grid.DataSource = dt;
             Grid.DataBind();
         }
 
         private void BindChuatt()
         {
-            SqlCommand cmd = new SqlCommand("SELECT *,(TienPhong+TienDien+TienNuoc+PhuPhi) AS Tong FROM HoaDon WHERE DaThanhToan='False'", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("SELECT HopDong.*, HoaDon.*, (TienPhong+TienDien+TienNuoc+PhuPhi) AS Tong FROM HoaDon,HopDong WHERE HoaDon.MaHopDong = Hopdong.MaHopDong AND DaThanhToan='False'", DB.GetConnection());
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -54,7 +56,7 @@ namespace LapTrinhWeb
 
         private void BindDaTT()
         {
-            SqlCommand cmd = new SqlCommand("SELECT *,(TienPhong+TienDien+TienNuoc+PhuPhi) AS Tong FROM HoaDon WHERE DaThanhToan='True'", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("SELECT HopDong.*, HoaDon.*,(TienPhong+TienDien+TienNuoc+PhuPhi) AS Tong FROM HoaDon,HopDong WHERE HoaDon.MaHopDong = Hopdong.MaHopDong AND DaThanhToan='True'", DB.GetConnection());
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);

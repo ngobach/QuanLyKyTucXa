@@ -64,7 +64,7 @@
             <hr />
             <%-- form area --%>
             <asp:Panel runat="server" CssClass="row">
-                <div class="col-xs-5">
+                <div class="col-xs-4">
                     <div class="form-group">
                         <label>Mã hợp đồng</label>
                         <asp:DropDownList ID="dropMaHD" runat="server" CssClass="form-control" />
@@ -82,10 +82,16 @@
                         <asp:DropDownList ID="dropThang" runat="server" CssClass="form-control" />
                     </div>
                 </div>
-                <div class="col-xs-3">
+                <div class="col-xs-2">
                     <div class="form-group">
                         <label></label>
                         <asp:LinkButton runat="server" ID="btnAdd" Text="Thêm Mới" OnClick="btnAdd_Click" CssClass="btn btn-primary btn-block" />
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="form-group">
+                        <label></label>
+                        <asp:LinkButton runat="server" ID="btnSearch" Text="Tìm kiếm" CssClass="btn btn-danger btn-block" OnClick="btnSearch_Click" />
                     </div>
                 </div>
             </asp:Panel>

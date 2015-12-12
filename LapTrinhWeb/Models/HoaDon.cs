@@ -21,10 +21,10 @@ namespace LapTrinhWeb.Models
             DataTable table = new DataTable();
             SqlCommand cmd;
             if (mahd == "")
-                cmd = new SqlCommand("SELECT HoaDon.*,(TienPhong+TienDien+TienNuoc+PhuPhi) AS Tong FROM HoaDon ORDER BY ID DESC", DB.GetConnection());
+                cmd = new SqlCommand("SELECT HoaDon.*,(TienPhong+TienDien+TienNuoc+PhuPhi) AS Tong FROM HoaDon ORDER BY ID DESC ", DB.GetConnection());
             else
-            { 
-                cmd = new SqlCommand("SELECT HoaDon.*,(TienPhong+TienDien+TienNuoc+PhuPhi) AS Tong FROM HoaDon WHERE MaHopDong=@mahd ORDER BY ID DESC", DB.GetConnection());
+            {
+                cmd = new SqlCommand("SELECT HoaDon.*,(TienPhong+TienDien+TienNuoc+PhuPhi) AS Tong FROM HoaDon WHERE MaHopDong=@mahd ORDER BY ID DESC ", DB.GetConnection());
                 cmd.Parameters.AddWithValue("@mahd", mahd);
             }
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);

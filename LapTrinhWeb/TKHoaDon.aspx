@@ -42,6 +42,7 @@
                         <HeaderStyle Width="5%" CssClass="text-center"/>
                         <ItemStyle CssClass="text-center" Font-Bold="true"/>
                     </asp:BoundField>
+                    <asp:BoundField DataField="Phong" HeaderText="Phòng" ReadOnly="True" />
                     <asp:BoundField
                         DataField="MaHopDong" HeaderText="Mã HD">
                         <HeaderStyle Width="15%" CssClass="text-center"/>
