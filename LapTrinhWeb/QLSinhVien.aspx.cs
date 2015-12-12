@@ -8,7 +8,6 @@ using LapTrinhWeb.App_Code;
 using System.Data.SqlClient;
 using System.Data;
 using System.Text.RegularExpressions;
-using System.Data.SqlClient;
 
 namespace LapTrinhWeb
 {
@@ -188,31 +187,33 @@ namespace LapTrinhWeb
         {
             if (txtSearch.Text == "")
             {
-                alert = new Alert("Eror", "Lỗi", "Chưa nhập mã sinh viên");
+                alert = new Alert("warning", "Lỗi", "Chưa nhập nội dung tìm kiếm!");
                 BindGrid();
                 ResetForm();
             }
-            else 
+            else
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM SinhVien WHERE MaSV=@masv",DB.GetConnection());
-                cmd.Parameters.AddWithValue("@masv", txtSearch.Text);
+                const string query = "SELECT * FROM SinhVien WHERE MaSV LIKE @kw OR HoTen LIKE @kw";
+                SqlCommand cmd = new SqlCommand(query, DB.GetConnection());
+                cmd.Parameters.AddWithValue("@kw", "%"+txtSearch.Text+"%");
                 SqlDataReader r = cmd.ExecuteReader();
                 if (r.Read() == false)
                 {
-                    alert = new Alert("EROR", "Lỗi", "Mã sinh viên vừa nhập không tồn tại");
+                    alert = new Alert("warning", "Lỗi", "Không tìm thấy sinh viên phù hợp!");
                     Grid.Visible = false;
                     ResetForm();
                     btnShowAll.Visible = true;
                 }
                 else
                 {
-                    SqlCommand sqlcmd = new SqlCommand("SELECT * FROM SinhVien WHERE MaSV=@masv", DB.GetConnection());
-                    sqlcmd.Parameters.AddWithValue("masv", txtSearch.Text);
+                    SqlCommand sqlcmd = new SqlCommand(query, DB.GetConnection());
+                    sqlcmd.Parameters.AddWithValue("kw", "%"+txtSearch.Text+"%");
                     SqlDataAdapter da = new SqlDataAdapter(sqlcmd);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     Grid.DataSource = dt;
                     Grid.DataBind();
+                    Grid.Visible = true;
                     ResetForm();
                     btnShowAll.Visible = true;
                 }

@@ -6,7 +6,7 @@
             <form runat="server">
                 <div class="container timkiem">
                 <div class="form-group col-lg-4">
-                    <label>Nhập mã sinh viên cần tìm:</label>
+                    <label>Nhập mã hoặc họ tên sinh viên cần tìm:</label>
                     <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" />
                 </div>
                 <div class="col-lg-1 btnSearch">
