@@ -12,8 +12,8 @@
             </div>
             <div class="col-xs-4">
                 <div class="well well-sm text-center">
-                    <h3>Số hợp đồng đã hết hạn:</h3>
-                    <h1><asp:Label runat="server" ID="lblHH" CssClass="text-danger" Text=""/></h1>
+                    <h3>Số hợp đồng chưa kết thúc:</h3>
+                    <h1><asp:Label runat="server" ID="lblChuaKT" CssClass="text-success" Text=""/></h1>
                     <asp:Button runat="server" ID="btnChuaTT" Text="Chi tiết"
                             CssClass="btn btn-primary" OnClick="btnChuakt_Click" />
                 </div>

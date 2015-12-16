@@ -25,9 +25,11 @@ namespace LapTrinhWeb
             if (!IsPostBack)
             {
                 // Load data
-                lblTong.Text = Convert.ToString(HopDong.TongSo());
-                lblHH.Text = Convert.ToString(HopDong.SoHetHan());
-                lblKetThuc.Text = Convert.ToString(HopDong.SoKetThuc());
+                int tong = HopDong.TongSo();
+                int ketthuc = HopDong.SoKetThuc();
+                lblTong.Text = Convert.ToString(tong);
+                lblChuaKT.Text = Convert.ToString(tong - ketthuc);
+                lblKetThuc.Text = Convert.ToString(ketthuc);
                 BindTong();
             }
         }

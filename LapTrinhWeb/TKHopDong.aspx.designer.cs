@@ -31,13 +31,13 @@ namespace LapTrinhWeb {
         protected global::System.Web.UI.WebControls.Button btnTong;
         
         /// <summary>
-        /// lblHH control.
+        /// lblChuaKT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHH;
+        protected global::System.Web.UI.WebControls.Label lblChuaKT;
         
         /// <summary>
         /// btnChuaTT control.
