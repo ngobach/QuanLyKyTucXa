@@ -115,7 +115,7 @@ namespace LapTrinhCSharp
             reader.Close();
             return hopdong;
         }
-        public void Insert()
+        public void Create()
         {
             SqlCommand cmd = new SqlCommand("INSERT INTO HopDong VALUES (@mahd,@ngaybd,@ngayhh,@phong,@dakt)", DB.GetConnection());
             cmd.Parameters.AddWithValue("@mahd", MaHopDong);

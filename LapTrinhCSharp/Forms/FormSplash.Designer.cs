@@ -43,7 +43,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QLKTX";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.FormSplash_Load);
+            this.Shown += new System.EventHandler(this.FormSplash_Shown);
             this.ResumeLayout(false);
 
         }

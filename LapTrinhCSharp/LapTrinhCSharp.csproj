@@ -65,6 +65,18 @@
     <Compile Include="Forms\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormQLHopDong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormQLHopDong.Designer.cs">
+      <DependentUpon>FormQLHopDong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormQLPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormQLPhong.Designer.cs">
+      <DependentUpon>FormQLPhong.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormQLSinhVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +101,7 @@
     <Compile Include="Forms\FormUser.Designer.cs">
       <DependentUpon>FormUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Phong.cs" />
     <Compile Include="Models\HoaDon.cs" />
     <Compile Include="Models\HopDong.cs" />
     <Compile Include="Models\SinhVien.cs" />
@@ -102,6 +115,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormQLHopDong.resx">
+      <DependentUpon>FormQLHopDong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormQLPhong.resx">
+      <DependentUpon>FormQLPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormQLSinhVien.resx">
       <DependentUpon>FormQLSinhVien.cs</DependentUpon>

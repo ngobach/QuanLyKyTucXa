@@ -47,5 +47,15 @@ namespace LapTrinhCSharp
         {
             Application.Exit();
         }
+
+        private void btnQLPhong_Click(object sender, EventArgs e)
+        {
+            ShowForm(new FormQLPhong());
+        }
+
+        private void btnQLHopDong_Click(object sender, EventArgs e)
+        {
+            ShowForm(new FormQLHopDong());
+        }
     }
 }

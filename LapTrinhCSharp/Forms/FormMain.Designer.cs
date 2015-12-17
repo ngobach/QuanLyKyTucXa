@@ -90,6 +90,7 @@
             this.btnQLHopDong.TabIndex = 16;
             this.btnQLHopDong.Text = "Quản Lý Hợp Đồng";
             this.btnQLHopDong.UseVisualStyleBackColor = true;
+            this.btnQLHopDong.Click += new System.EventHandler(this.btnQLHopDong_Click);
             // 
             // btnQLPhong
             // 
@@ -107,6 +108,7 @@
             this.btnQLPhong.TabIndex = 15;
             this.btnQLPhong.Text = "Quản Lý Phòng";
             this.btnQLPhong.UseVisualStyleBackColor = true;
+            this.btnQLPhong.Click += new System.EventHandler(this.btnQLPhong_Click);
             // 
             // btnQLHoaDon
             // 

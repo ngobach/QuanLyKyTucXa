@@ -15,10 +15,11 @@ namespace LapTrinhCSharp
         public FormSplash()
         {
             InitializeComponent();
+            Opacity = 0;
         }
-
-        private void FormSplash_Load(object sender, EventArgs e)
+        private void FormSplash_Shown(object sender, EventArgs e)
         {
+
             double i = 0;
             for (; i < .9; i += 0.02)
             {
@@ -26,15 +27,15 @@ namespace LapTrinhCSharp
                 Application.DoEvents();
                 System.Threading.Thread.Sleep(10);
             }
-            System.Threading.Thread.Sleep(1000*3);
-            for (; i >0; i -= 0.02)
+            System.Threading.Thread.Sleep(1000 * 3);
+            for (; i > .3; i -= 0.02)
             {
                 this.Opacity = i;
                 Application.DoEvents();
                 System.Threading.Thread.Sleep(10);
             }
             Hide();
-            (new FormMain()).Show();
+            (new FormLogin()).Show();
         }
     }
 }
