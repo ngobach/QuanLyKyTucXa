@@ -19,7 +19,7 @@ namespace LapTrinhCSharp
 #if DEBUG
             Application.Run(new FormMain());
 #else
-            Application.Run(new FormLogin());
+            Application.Run(new FormSplash());
 #endif
         }
     }

@@ -197,6 +197,7 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.table.ResumeLayout(false);
             this.table.PerformLayout();
             this.ResumeLayout(false);
