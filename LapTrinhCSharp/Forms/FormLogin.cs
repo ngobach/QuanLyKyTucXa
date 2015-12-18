@@ -31,11 +31,6 @@ namespace LapTrinhCSharp
                 MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác", "Đăng nhập thất bại!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void FormLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void check(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)

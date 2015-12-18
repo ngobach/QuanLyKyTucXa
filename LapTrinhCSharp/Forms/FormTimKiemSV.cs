@@ -43,7 +43,7 @@ namespace LapTrinhCSharp
             txtKhoa.Text = row.Cells["Khoa"].Value.ToString();
             txtLop.Text = row.Cells["Lop"].Value.ToString();
             txtSDT.Text = row.Cells["SoDienThoai"].Value.ToString();
-            txtNgaySinh.Text = row.Cells["NgaySinh"].Value.ToString();
+            txtNgaySinh.Text = ((DateTime)row.Cells["NgaySinh"].Value).ToString("dd/MM/yyyy");
         }
 
         private void FormTimKiemSV_Load(object sender, EventArgs e)

@@ -64,17 +64,30 @@ namespace LapTrinhCSharp
         }
         public void Update(String oldID)
         {
-            using (SqlConnection con = DB.GetConnection())
-            using (SqlCommand cmd = new SqlCommand("UPDATE [User] SET Username=@uid,MatKhau=@pwd,HoTen=@name,NgaySinh=@dob,QueQuan=@addr WHERE Username=@oldid", con))
-            {
-                cmd.Parameters.AddWithValue("@uid", Username);
-                cmd.Parameters.AddWithValue("@pwd", MatKhau);
-                cmd.Parameters.AddWithValue("@name", HoTen);
-                cmd.Parameters.AddWithValue("@dob", NgaySinh);
-                cmd.Parameters.AddWithValue("@addr", QueQuan);
-                cmd.Parameters.AddWithValue("@oldid", oldID);
-                cmd.ExecuteNonQuery();
-            }
+            if (MatKhau != String.Empty)
+                using (SqlConnection con = DB.GetConnection())
+                using (SqlCommand cmd = new SqlCommand("UPDATE [User] SET Username=@uid,MatKhau=@pwd,HoTen=@name,NgaySinh=@dob,QueQuan=@addr WHERE Username=@oldid", con))
+                {
+                    cmd.Parameters.AddWithValue("@uid", Username);
+                    cmd.Parameters.AddWithValue("@pwd", MatKhau);
+                    cmd.Parameters.AddWithValue("@name", HoTen);
+                    cmd.Parameters.AddWithValue("@dob", NgaySinh);
+                    cmd.Parameters.AddWithValue("@addr", QueQuan);
+                    cmd.Parameters.AddWithValue("@oldid", oldID);
+                    cmd.ExecuteNonQuery();
+                }
+            else
+                using (SqlConnection con = DB.GetConnection())
+                using (SqlCommand cmd = new SqlCommand("UPDATE [User] SET Username=@uid,HoTen=@name,NgaySinh=@dob,QueQuan=@addr WHERE Username=@oldid", con))
+                {
+                    cmd.Parameters.AddWithValue("@uid", Username);
+                    cmd.Parameters.AddWithValue("@name", HoTen);
+                    cmd.Parameters.AddWithValue("@dob", NgaySinh);
+                    cmd.Parameters.AddWithValue("@addr", QueQuan);
+                    cmd.Parameters.AddWithValue("@oldid", oldID);
+                    cmd.ExecuteNonQuery();
+                }
+
         }
         public void Delete()
         {
