@@ -375,7 +375,7 @@
             this.rdDaTT.TabStop = true;
             this.rdDaTT.Text = "Đã thanh toán";
             this.rdDaTT.UseVisualStyleBackColor = true;
-            this.rdDaTT.CheckedChanged += new System.EventHandler(this.rdDaTT_CheckedChanged);
+            this.rdDaTT.Click += new System.EventHandler(this.rdDaTT_Click);
             // 
             // rdChuaTT
             // 
@@ -387,7 +387,7 @@
             this.rdChuaTT.TabStop = true;
             this.rdChuaTT.Text = "Chưa thanh toán";
             this.rdChuaTT.UseVisualStyleBackColor = true;
-            this.rdChuaTT.CheckedChanged += new System.EventHandler(this.rdChuaTT_CheckedChanged);
+            this.rdChuaTT.Click += new System.EventHandler(this.rdChuaTT_Click);
             // 
             // rdTatca
             // 
@@ -399,7 +399,7 @@
             this.rdTatca.TabStop = true;
             this.rdTatca.Text = "Tất cả";
             this.rdTatca.UseVisualStyleBackColor = true;
-            this.rdTatca.CheckedChanged += new System.EventHandler(this.rdTatca_CheckedChanged);
+            this.rdTatca.Click += new System.EventHandler(this.rdTatca_Click);
             // 
             // btnThem
             // 

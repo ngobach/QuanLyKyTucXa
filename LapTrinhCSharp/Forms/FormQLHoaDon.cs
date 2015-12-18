@@ -22,7 +22,9 @@ namespace LapTrinhCSharp
         {
             rdTatca.Checked = true;
             loadCombo();
+            loadTatca();
         }
+
 
         private void loadTatca()
         {
@@ -49,20 +51,6 @@ namespace LapTrinhCSharp
             Grid.DataSource = dt;
         }
 
-        private void rdTatca_CheckedChanged(object sender, EventArgs e)
-        {
-            loadTatca();
-        }
-
-        private void rdChuaTT_CheckedChanged(object sender, EventArgs e)
-        {
-            loadChuaTT();
-        }
-
-        private void rdDaTT_CheckedChanged(object sender, EventArgs e)
-        {
-            loadDaTT();
-        }
 
         private void loadCombo()
         {
@@ -113,8 +101,15 @@ namespace LapTrinhCSharp
             cmd.Parameters.AddWithValue("@phuphi", txtPhuphi.Text);
             cmd.Parameters.AddWithValue("@chitiet", DBNull.Value);
             cmd.Parameters.AddWithValue("@datt", checkTT.Checked);
-            cmd.ExecuteNonQuery();
-            loadTatca();
+            try
+            {
+                cmd.ExecuteNonQuery();
+                loadTatca();
+            }
+            catch
+            {
+                MessageBox.Show("Hóa đơn này đã tồn tại!", "Thông báo");
+            }
         }
 
         private void btnCapnhat_Click(object sender, EventArgs e)
@@ -151,6 +146,25 @@ namespace LapTrinhCSharp
         {
             (new FormReportHoaDon()).ShowDialog();
         }
+
+        private void rdTatca_Click(object sender, EventArgs e)
+        {
+            rdTatca.Checked = true;
+            loadTatca();
+        }
+
+        private void rdChuaTT_Click(object sender, EventArgs e)
+        {
+            rdChuaTT.Checked = true;
+            loadChuaTT();
+        }
+
+        private void rdDaTT_Click(object sender, EventArgs e)
+        {
+            rdDaTT.Checked = true;
+            loadDaTT();
+        }
+
 
 
     }
