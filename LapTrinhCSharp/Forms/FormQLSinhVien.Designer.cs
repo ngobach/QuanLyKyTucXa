@@ -32,15 +32,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormQLSinhVien));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.radNu = new System.Windows.Forms.RadioButton();
             this.radNam = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
             this.txtQueQuan = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtHoTen = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtLop = new System.Windows.Forms.TextBox();
+            this.txtSDT = new System.Windows.Forms.TextBox();
+            this.txtKhoa = new System.Windows.Forms.TextBox();
             this.txtMaSV = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gridView = new System.Windows.Forms.DataGridView();
@@ -55,12 +61,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.txtKhoa = new System.Windows.Forms.TextBox();
-            this.txtLop = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.datePicker = new System.Windows.Forms.DateTimePicker();
-            this.txtSDT = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.btnReport = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             this.SuspendLayout();
@@ -90,6 +91,15 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin SV";
+            // 
+            // datePicker
+            // 
+            this.datePicker.CustomFormat = "dd/MM/yyyy";
+            this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datePicker.Location = new System.Drawing.Point(437, 40);
+            this.datePicker.Name = "datePicker";
+            this.datePicker.Size = new System.Drawing.Size(243, 20);
+            this.datePicker.TabIndex = 6;
             // 
             // radNu
             // 
@@ -128,6 +138,24 @@
             this.txtQueQuan.Name = "txtQueQuan";
             this.txtQueQuan.Size = new System.Drawing.Size(244, 20);
             this.txtQueQuan.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(376, 43);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Ngày sinh";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(401, 20);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "SDT";
             // 
             // label6
             // 
@@ -171,6 +199,27 @@
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Họ Tên";
+            // 
+            // txtLop
+            // 
+            this.txtLop.Location = new System.Drawing.Point(436, 92);
+            this.txtLop.Name = "txtLop";
+            this.txtLop.Size = new System.Drawing.Size(244, 20);
+            this.txtLop.TabIndex = 1;
+            // 
+            // txtSDT
+            // 
+            this.txtSDT.Location = new System.Drawing.Point(436, 17);
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.Size = new System.Drawing.Size(244, 20);
+            this.txtSDT.TabIndex = 1;
+            // 
+            // txtKhoa
+            // 
+            this.txtKhoa.Location = new System.Drawing.Point(436, 68);
+            this.txtKhoa.Name = "txtKhoa";
+            this.txtKhoa.Size = new System.Drawing.Size(244, 20);
+            this.txtKhoa.TabIndex = 1;
             // 
             // txtMaSV
             // 
@@ -322,59 +371,23 @@
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // txtKhoa
+            // btnReport
             // 
-            this.txtKhoa.Location = new System.Drawing.Point(436, 68);
-            this.txtKhoa.Name = "txtKhoa";
-            this.txtKhoa.Size = new System.Drawing.Size(244, 20);
-            this.txtKhoa.TabIndex = 1;
-            // 
-            // txtLop
-            // 
-            this.txtLop.Location = new System.Drawing.Point(436, 92);
-            this.txtLop.Name = "txtLop";
-            this.txtLop.Size = new System.Drawing.Size(244, 20);
-            this.txtLop.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(376, 43);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Ngày sinh";
-            // 
-            // datePicker
-            // 
-            this.datePicker.CustomFormat = "dd/MM/yyyy";
-            this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datePicker.Location = new System.Drawing.Point(437, 40);
-            this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(243, 20);
-            this.datePicker.TabIndex = 6;
-            // 
-            // txtSDT
-            // 
-            this.txtSDT.Location = new System.Drawing.Point(436, 17);
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(244, 20);
-            this.txtSDT.TabIndex = 1;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(401, 20);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "SDT";
+            this.btnReport.ForeColor = System.Drawing.Color.Maroon;
+            this.btnReport.Location = new System.Drawing.Point(620, 435);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(126, 40);
+            this.btnReport.TabIndex = 102;
+            this.btnReport.Text = "Báo cáo danh sách SV";
+            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // FormQLSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(758, 487);
+            this.Controls.Add(this.btnReport);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
@@ -426,6 +439,7 @@
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtSDT;
+        private System.Windows.Forms.Button btnReport;
     }
 }
 

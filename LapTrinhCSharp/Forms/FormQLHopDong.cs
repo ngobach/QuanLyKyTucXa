@@ -27,6 +27,18 @@ namespace LapTrinhCSharp
             grid.AutoGenerateColumns = false;
             grid.DataSource = HopDong.All();
         }
+        private void LoadListSV()
+        {
+            if (grid.SelectedRows.Count == 0)
+                return;
+            HopDong hd = ReadForm();
+            lst.DisplayMember = "HoTen";
+            lst.ValueMember = "MaSV";
+            lst.DataSource = hd.GetSinhVien();
+            cmbSV.DisplayMember = "HoTen";
+            cmbSV.ValueMember = "MaSV";
+            cmbSV.DataSource = hd.GetSinhVienNotIn();
+        }
         private void FormQLHopDong_Load(object sender, EventArgs e)
         {
             LoadCombobox();
@@ -116,6 +128,34 @@ namespace LapTrinhCSharp
             {
                 MessageBox.Show(exc.Message);
             }
+        }
+
+        private void btnAddSV_Click(object sender, EventArgs e)
+        {
+            if (cmbSV.SelectedItem == null) return;
+            HopDong hd = ReadForm();
+            hd.AddSinhVien(cmbSV.SelectedValue.ToString());
+            LoadListSV();
+        }
+
+        private void grid_SelectionChanged(object sender, EventArgs e)
+        {
+            if (grid.SelectedRows.Count == 0) return;
+            DataGridViewRow row = grid.SelectedRows[0];
+            txtMaHD.Text = row.Cells["MaHopDong"].Value.ToString();
+            dtp1.Value = (DateTime)row.Cells["NgayBatDau"].Value;
+            dtp2.Value = (DateTime)row.Cells["NgayHetHan"].Value;
+            cmbPhong.SelectedValue = (int)row.Cells["MaPhong"].Value;
+            chk.Checked = (bool)row.Cells["DaKetThuc"].Value;
+            LoadListSV();
+        }
+
+        private void btnDeleteSV_Click(object sender, EventArgs e)
+        {
+            if (lst.SelectedItem == null) return;
+            HopDong hd = ReadForm();
+            hd.DeleteSinhVien(lst.SelectedValue.ToString());
+            LoadListSV();
         }
     }
 }

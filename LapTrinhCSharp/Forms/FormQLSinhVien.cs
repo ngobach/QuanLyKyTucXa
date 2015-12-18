@@ -175,5 +175,10 @@ namespace LapTrinhCSharp
             LoadFormData();
         }
 
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            (new FormReportSV()).ShowDialog();
+        }
+
     }
 }
