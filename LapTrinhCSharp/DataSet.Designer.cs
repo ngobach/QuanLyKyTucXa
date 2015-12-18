@@ -2670,7 +2670,7 @@ SELECT MaSV, HoTen, SoDienThoai, NgaySinh, GioiTinh, QueQuan, Lop, Khoa FROM Sin
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[HoaDon] ([MaHopDong], [Nam], [Thang], [TienPhong], [TienDien], [TienNuoc], [PhuPhi], [ChiTiet], [DaThanhToan]) VALUES (@MaHopDong, @Nam, @Thang, @TienPhong, @TienDien, @TienNuoc, @PhuPhi, @ChiTiet, @DaThanhToan);
-SELECT ID, MaHopDong, Nam, Thang, TienPhong, TienDien, TienNuoc, PhuPhi, ChiTiet, DaThanhToan FROM HoaDon WHERE (MaHopDong = @MaHopDong) AND (Nam = @Nam) AND (Thang = @Thang)";
+SELECT ID, MaHopDong, Nam, Thang, TienPhong, TienDien, TienNuoc, PhuPhi, ChiTiet, DaThanhToan FROM HoaDon WHERE (MaHopDong = @MaHopDong) AND (Nam = @Nam) AND (Thang = @Thang) ORDER BY ID";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaHopDong", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaHopDong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nam", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nam", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2684,7 +2684,7 @@ SELECT ID, MaHopDong, Nam, Thang, TienPhong, TienDien, TienNuoc, PhuPhi, ChiTiet
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[HoaDon] SET [MaHopDong] = @MaHopDong, [Nam] = @Nam, [Thang] = @Thang, [TienPhong] = @TienPhong, [TienDien] = @TienDien, [TienNuoc] = @TienNuoc, [PhuPhi] = @PhuPhi, [ChiTiet] = @ChiTiet, [DaThanhToan] = @DaThanhToan WHERE (([ID] = @Original_ID) AND ([MaHopDong] = @Original_MaHopDong) AND ([Nam] = @Original_Nam) AND ([Thang] = @Original_Thang) AND ([TienPhong] = @Original_TienPhong) AND ([TienDien] = @Original_TienDien) AND ([TienNuoc] = @Original_TienNuoc) AND ([PhuPhi] = @Original_PhuPhi) AND ((@IsNull_ChiTiet = 1 AND [ChiTiet] IS NULL) OR ([ChiTiet] = @Original_ChiTiet)) AND ([DaThanhToan] = @Original_DaThanhToan));
-SELECT ID, MaHopDong, Nam, Thang, TienPhong, TienDien, TienNuoc, PhuPhi, ChiTiet, DaThanhToan FROM HoaDon WHERE (MaHopDong = @MaHopDong) AND (Nam = @Nam) AND (Thang = @Thang)";
+SELECT ID, MaHopDong, Nam, Thang, TienPhong, TienDien, TienNuoc, PhuPhi, ChiTiet, DaThanhToan FROM HoaDon WHERE (MaHopDong = @MaHopDong) AND (Nam = @Nam) AND (Thang = @Thang) ORDER BY ID";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaHopDong", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaHopDong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nam", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nam", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -2722,7 +2722,7 @@ SELECT ID, MaHopDong, Nam, Thang, TienPhong, TienDien, TienNuoc, PhuPhi, ChiTiet
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, MaHopDong, Nam, Thang, TienPhong, TienDien, TienNuoc, PhuPhi, ChiTiet," +
-                " DaThanhToan FROM dbo.HoaDon";
+                " DaThanhToan FROM dbo.HoaDon ORDER BY ID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

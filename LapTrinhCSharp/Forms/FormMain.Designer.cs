@@ -126,6 +126,7 @@
             this.btnQLHoaDon.TabIndex = 14;
             this.btnQLHoaDon.Text = "Quản lý hóa đơn";
             this.btnQLHoaDon.UseVisualStyleBackColor = true;
+            this.btnQLHoaDon.Click += new System.EventHandler(this.btnQLHoaDon_Click);
             // 
             // btnQuanLyUser
             // 

@@ -118,6 +118,12 @@
     <Compile Include="Forms\FormQLSinhVien.Designer.cs">
       <DependentUpon>FormQLSinhVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormReportHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormReportHoaDon.Designer.cs">
+      <DependentUpon>FormReportHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormReportHopDong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     <EmbeddedResource Include="Forms\FormQLSinhVien.resx">
       <DependentUpon>FormQLSinhVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormReportHoaDon.resx">
+      <DependentUpon>FormReportHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormReportHopDong.resx">
       <DependentUpon>FormReportHopDong.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,6 +196,7 @@
     <EmbeddedResource Include="Forms\FormUser.resx">
       <DependentUpon>FormUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportHoaDon.rdlc" />
     <EmbeddedResource Include="Forms\ReportHopDong.rdlc" />
     <EmbeddedResource Include="Forms\ReportSV.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
