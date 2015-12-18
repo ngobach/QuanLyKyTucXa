@@ -157,5 +157,10 @@ namespace LapTrinhCSharp
             hd.DeleteSinhVien(lst.SelectedValue.ToString());
             LoadListSV();
         }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            (new FormReportHopDong()).ShowDialog();
+        }
     }
 }

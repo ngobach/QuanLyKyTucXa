@@ -1,6 +1,6 @@
 ﻿namespace LapTrinhCSharp
 {
-    partial class FormReportSV
+    partial class FormReportHopDong
     {
         /// <summary>
         /// Required designer variable.
@@ -29,19 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.SinhVienBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.DataSet = new LapTrinhCSharp.DataSet();
             this.report = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.SinhVienTableAdapter = new LapTrinhCSharp.DataSetTableAdapters.SinhVienTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.SinhVienBindingSource)).BeginInit();
+            this.HopDongBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.HopDongTableAdapter = new LapTrinhCSharp.DataSetTableAdapters.HopDongTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HopDongBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // SinhVienBindingSource
-            // 
-            this.SinhVienBindingSource.DataMember = "SinhVien";
-            this.SinhVienBindingSource.DataSource = this.DataSet;
             // 
             // DataSet
             // 
@@ -52,33 +47,38 @@
             // 
             this.report.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.report.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource2.Name = "DataSet";
-            reportDataSource2.Value = this.SinhVienBindingSource;
-            this.report.LocalReport.DataSources.Add(reportDataSource2);
-            this.report.LocalReport.ReportEmbeddedResource = "LapTrinhCSharp.Forms.ReportSV.rdlc";
+            reportDataSource1.Name = "DSHopDong";
+            reportDataSource1.Value = this.HopDongBindingSource;
+            this.report.LocalReport.DataSources.Add(reportDataSource1);
+            this.report.LocalReport.ReportEmbeddedResource = "LapTrinhCSharp.Forms.ReportHopDong.rdlc";
             this.report.Location = new System.Drawing.Point(0, 0);
             this.report.Name = "report";
             this.report.Size = new System.Drawing.Size(894, 390);
             this.report.TabIndex = 0;
             this.report.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
-            // SinhVienTableAdapter
+            // HopDongBindingSource
             // 
-            this.SinhVienTableAdapter.ClearBeforeFill = true;
+            this.HopDongBindingSource.DataMember = "HopDong";
+            this.HopDongBindingSource.DataSource = this.DataSet;
             // 
-            // FormReportSV
+            // HopDongTableAdapter
+            // 
+            this.HopDongTableAdapter.ClearBeforeFill = true;
+            // 
+            // FormReportHopDong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(894, 390);
             this.Controls.Add(this.report);
             this.MaximizeBox = false;
-            this.Name = "FormReportSV";
+            this.Name = "FormReportHopDong";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Báo cáo danh sách sinh viên";
+            this.Text = "Báo cáo danh sách hợp đồng";
             this.Load += new System.EventHandler(this.FormReportSV_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.SinhVienBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HopDongBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -86,8 +86,8 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer report;
-        private System.Windows.Forms.BindingSource SinhVienBindingSource;
         private DataSet DataSet;
-        private DataSetTableAdapters.SinhVienTableAdapter SinhVienTableAdapter;
+        private System.Windows.Forms.BindingSource HopDongBindingSource;
+        private DataSetTableAdapters.HopDongTableAdapter HopDongTableAdapter;
     }
 }

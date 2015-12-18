@@ -50,6 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSet.cs">
+      <DependentUpon>DataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,6 +88,12 @@
     </Compile>
     <Compile Include="Forms\FormQLSinhVien.Designer.cs">
       <DependentUpon>FormQLSinhVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormReportHopDong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormReportHopDong.Designer.cs">
+      <DependentUpon>FormReportHopDong.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormReportSV.cs">
       <SubType>Form</SubType>
@@ -133,6 +143,9 @@
     <EmbeddedResource Include="Forms\FormQLSinhVien.resx">
       <DependentUpon>FormQLSinhVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormReportHopDong.resx">
+      <DependentUpon>FormReportHopDong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormReportSV.resx">
       <DependentUpon>FormReportSV.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,6 +158,7 @@
     <EmbeddedResource Include="Forms\FormUser.resx">
       <DependentUpon>FormUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportHopDong.rdlc" />
     <EmbeddedResource Include="Forms\ReportSV.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -182,17 +196,8 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Resources\07.png" />
-    <Content Include="Resources\head.png" />
-    <Content Include="Resources\ic_class.png" />
-    <Content Include="Resources\ic_director.png" />
-    <Content Include="Resources\ic_student.png" />
-    <Content Include="Resources\ic_student_search.png" />
-    <Content Include="Resources\ic_university.png" />
-    <Content Include="Resources\Shutdown-64.png" />
-    <Content Include="Resources\User-64.png" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
