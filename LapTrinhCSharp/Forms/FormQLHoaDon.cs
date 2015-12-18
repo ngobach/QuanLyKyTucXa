@@ -147,6 +147,11 @@ namespace LapTrinhCSharp
             loadTatca();
         }
 
+        private void btnBaocao_Click(object sender, EventArgs e)
+        {
+            (new FormReportHoaDon()).ShowDialog();
+        }
+
 
     }
 }

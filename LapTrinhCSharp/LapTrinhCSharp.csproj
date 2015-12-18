@@ -100,6 +100,12 @@
     <Compile Include="Forms\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormQLHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormQLHoaDon.Designer.cs">
+      <DependentUpon>FormQLHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormQLHopDong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormQLHoaDon.resx">
+      <DependentUpon>FormQLHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormQLHopDong.resx">
       <DependentUpon>FormQLHopDong.cs</DependentUpon>

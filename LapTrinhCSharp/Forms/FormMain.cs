@@ -60,7 +60,7 @@ namespace LapTrinhCSharp
 
         private void btnQLHoaDon_Click(object sender, EventArgs e)
         {
-            (new FormReportHoaDon()).ShowDialog();
+            ShowForm(new FormQLHoaDon());
         }
     }
 }
