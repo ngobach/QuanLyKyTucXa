@@ -49,9 +49,9 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(90, 104);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(285, 39);
+            this.lblTitle.Size = new System.Drawing.Size(223, 39);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "ĐH Điện Lực HN";
+            this.lblTitle.Text = "Quản lý KTX";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // table

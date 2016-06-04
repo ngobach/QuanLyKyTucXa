@@ -35,7 +35,7 @@ namespace LapTrinhCSharp
         public void Update()
         {
             using (SqlConnection con = DB.GetConnection())
-            using (SqlCommand cmd = new SqlCommand("UPDATE Phong SET TenPhong=(@ten) WHERE ID=@id", con))
+            using (SqlCommand cmd = new SqlCommand("UPDATE Phong SET TenPhong=@ten WHERE ID=@id", con))
             {
                 cmd.Parameters.AddWithValue("@id", ID);
                 cmd.Parameters.AddWithValue("@ten", TenPhong);
