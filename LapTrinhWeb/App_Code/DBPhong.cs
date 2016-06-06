@@ -23,10 +23,15 @@ namespace LapTrinhWeb.App_Code
         {
             DataTable table = new DataTable();
             SqlCommand cmd;
-            if (except==0)
-                cmd = new SqlCommand("SELECT * FROM Phong WHERE (SELECT COUNT(*) FROM HopDong WHERE HopDong.Phong = Phong.ID AND HopDong.DaKetThuc = 0)=0", GetConnection());
-            else { 
-                cmd = new SqlCommand("SELECT * FROM Phong WHERE (SELECT COUNT(*) FROM HopDong WHERE HopDong.Phong = Phong.ID AND HopDong.DaKetThuc = 0)=0 OR ID=@except", GetConnection());
+            if (except == 0)
+            {
+                cmd = new SqlCommand("WEB_Phong_SelectEmpty", GetConnection());
+                cmd.CommandType = CommandType.StoredProcedure;
+            }
+            else
+            {
+                cmd = new SqlCommand("WEB_Phong_SelectEmptyID", GetConnection());
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@except", except);
             }
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -36,20 +41,23 @@ namespace LapTrinhWeb.App_Code
 
         public static void Insert(String tenphong)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO Phong (TenPhong) VALUES (@tenphong)",GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_Phong_Insert", GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@tenphong", tenphong);
             cmd.ExecuteNonQuery();
         }
         public static void Update(int id, String tenphong)
         {
-            SqlCommand cmd = new SqlCommand("UPDATE Phong SET TenPhong=@tenphong WHERE ID=@id", GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_Phong_Update", GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id", id);
             cmd.Parameters.AddWithValue("@tenphong", tenphong);
             cmd.ExecuteNonQuery();
         }
         public static void Delete(int id)
         {
-            SqlCommand cmd = new SqlCommand("DELETE FROM Phong WHERE ID=@id", GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_Phong_Delete", GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id", id);
             cmd.ExecuteNonQuery();
         }

@@ -36,7 +36,8 @@ namespace LapTrinhWeb
         }
         private void BindTong()
         {
-            SqlCommand cmd = new SqlCommand("SELECT HopDong.*, HoaDon.*, (TienPhong+TienDien+TienNuoc+PhuPhi) AS Tong FROM HoaDon,HopDong WHERE HoaDon.MaHopDong = Hopdong.MaHopDong", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_TKHoadon_Tong", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -46,7 +47,8 @@ namespace LapTrinhWeb
 
         private void BindChuatt()
         {
-            SqlCommand cmd = new SqlCommand("SELECT HopDong.*, HoaDon.*, (TienPhong+TienDien+TienNuoc+PhuPhi) AS Tong FROM HoaDon,HopDong WHERE HoaDon.MaHopDong = Hopdong.MaHopDong AND DaThanhToan='False'", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_TKHoadon_Chuatt", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -56,7 +58,8 @@ namespace LapTrinhWeb
 
         private void BindDaTT()
         {
-            SqlCommand cmd = new SqlCommand("SELECT HopDong.*, HoaDon.*,(TienPhong+TienDien+TienNuoc+PhuPhi) AS Tong FROM HoaDon,HopDong WHERE HoaDon.MaHopDong = Hopdong.MaHopDong AND DaThanhToan='True'", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_TKHoadon_Datt", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);

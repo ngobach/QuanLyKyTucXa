@@ -11,6 +11,7 @@
                 <p>Ngô Xuân Bách <em>1381310007</em></p>
                 <p>Trần Anh Đức <em>1381310018</em></p>
                 <p>Hà Thị Hoàn <em>1381310029</em></p>
+                <p>Nguyễn Huy Hoàng <em>1181020039</em></p>
             <h4>Giáo viên hướng dẫn: <b>Thầy Phạm Đức Hồng</b></h4>
         </div>
     </div>

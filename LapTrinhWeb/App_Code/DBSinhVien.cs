@@ -22,7 +22,8 @@ namespace LapTrinhWeb.App_Code
 
         public static void Insert(String masv, String hoten, String sdt, DateTime ngaysinh, String gioitinh, String quequan, String lop, String khoa)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO SinhVien VALUES (@masv,@hoten,@sdt,@ngaysinh,@gioitinh,@quequan,@lop,@khoa)",GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_Sinhvien_Insert", GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@masv", masv);
             cmd.Parameters.AddWithValue("@hoten", hoten);
             cmd.Parameters.AddWithValue("@sdt", sdt);
@@ -36,7 +37,8 @@ namespace LapTrinhWeb.App_Code
 
         public static void Update(String old, String masv, String hoten, String sdt, DateTime ngaysinh, String gioitinh, String quequan, String lop, String khoa)
         {
-            SqlCommand cmd = new SqlCommand("UPDATE SinhVien SET MaSV=@masv,HoTen=@hoten,SoDienThoai=@sdt,NgaySinh=@ngaysinh,GioiTinh=@gioitinh,QueQuan=@quequan, Lop=@lop, Khoa=@khoa WHERE MaSV=@old", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_Sinhvien_Update", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@old", old);
             cmd.Parameters.AddWithValue("@masv", masv);
             cmd.Parameters.AddWithValue("@hoten", hoten);
@@ -51,7 +53,8 @@ namespace LapTrinhWeb.App_Code
 
         public static void Delete(String masv)
         {
-            SqlCommand cmd = new SqlCommand("DELETE FROM [SinhVien] WHERE MaSV=@masv", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_Sinhvien_Delete", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@masv", masv);
             cmd.ExecuteNonQuery();
         }

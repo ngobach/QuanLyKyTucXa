@@ -34,7 +34,8 @@ namespace LapTrinhWeb.App_Code
 
         public static User GetUser(String uid)
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM [User] WHERE [Username]=@uid",GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_User_GetUser", GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@uid", uid);
             SqlDataReader reader = cmd.ExecuteReader();
             if (!reader.Read())
@@ -84,7 +85,8 @@ namespace LapTrinhWeb.App_Code
         }
         public static bool IsValid(String username, String password)
         {
-            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM [User] WHERE Username=@username AND MatKhau=@password", GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_User_Check", GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@username", username);
             cmd.Parameters.AddWithValue("@password", password);
             int result = (int)cmd.ExecuteScalar();

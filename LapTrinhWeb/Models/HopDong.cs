@@ -20,7 +20,8 @@ namespace LapTrinhWeb.Models
         public static DataTable Chuakt()
         { 
             DataTable table = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT HopDong.*, (SELECT COUNT(*) FROM CTHopDong WHERE CTHopDong.MaHopDong = HopDong.MaHopDong) AS SoNguoi, Phong.TenPhong, CASE WHEN HopDong.NgayHetHan < GETDATE() THEN 1 ELSE 0 END AS DaHetHan FROM HopDong JOIN Phong ON Phong.ID = HopDong.Phong WHERE DaKetThuc='False'", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_HopDong_Chuakt", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(table);
             return table;
@@ -29,7 +30,8 @@ namespace LapTrinhWeb.Models
         public static DataTable Dakt()
         {
             DataTable table = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT HopDong.*, (SELECT COUNT(*) FROM CTHopDong WHERE CTHopDong.MaHopDong = HopDong.MaHopDong) AS SoNguoi, Phong.TenPhong, CASE WHEN HopDong.NgayHetHan < GETDATE() THEN 1 ELSE 0 END AS DaHetHan FROM HopDong JOIN Phong ON Phong.ID = HopDong.Phong WHERE DaKetThuc='True'", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_HopDong_Dakt", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(table);
             return table;
@@ -46,7 +48,8 @@ namespace LapTrinhWeb.Models
         }
         public static DataTable List() {
             DataTable table = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT MaHopDong FROM HopDong", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_HopDong_Select_MaHD", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(table);
             return table;
@@ -54,24 +57,28 @@ namespace LapTrinhWeb.Models
 
         public static int TongSo()
         {
-            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM HopDong", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_HopDong_Tongso", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             return (Int32)cmd.ExecuteScalar();
         }
         public static int SoHetHan()
         {
-            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM HopDong WHERE NgayHetHan < GETDATE()", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_HopDong_Sohethan", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             return (Int32)cmd.ExecuteScalar();
         }
         public static int SoKetThuc()
         {
-            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM HopDong WHERE DaKetThuc=1", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_HopDong_Sokt", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             return (Int32)cmd.ExecuteScalar();
         }
 
         public DataTable GetSinhVien()
         {
             DataTable table = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT SinhVien.MaSV,SinhVien.HoTen FROM CTHopDong JOIN SinhVien ON CTHopDong.MaSV = SinhVien.MaSV WHERE CTHopDong.MaHopDong=@mahd", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_HopDong_GetSV", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@mahd", MaHopDong);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(table);
@@ -81,7 +88,8 @@ namespace LapTrinhWeb.Models
         public DataTable GetSinhVienNotIn()
         {
             DataTable table = new DataTable();
-            SqlCommand cmd = new SqlCommand("SELECT SinhVien.MaSV,SinhVien.HoTen FROM SinhVien WHERE MaSV NOT IN (SELECT MaSV FROM CTHopDong WHERE MaHopDong=@mahd)", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_HopDong_GetSVNotIn", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@mahd", MaHopDong);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(table);
@@ -90,14 +98,16 @@ namespace LapTrinhWeb.Models
 
         public void AddSinhVien(String masv)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO CTHopDong VALUES (@mahd,@masv)", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_HopDong_AddSV", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@mahd", MaHopDong);
             cmd.Parameters.AddWithValue("@masv", masv);
             cmd.ExecuteNonQuery();
         }
         public void DeleteSinhVien(String masv)
         {
-            SqlCommand cmd = new SqlCommand("DELETE FROM CTHopDong WHERE MaHopDong=@mahd AND MaSV=@masv", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_HopDong_DeleteSV", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@mahd", MaHopDong);
             cmd.Parameters.AddWithValue("@masv", masv);
             cmd.ExecuteNonQuery();
@@ -105,7 +115,8 @@ namespace LapTrinhWeb.Models
 
         public static HopDong Find(String mahd)
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM HopDong WHERE MaHopDong=@mahd", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_HopDong_Find", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@mahd", mahd);
             SqlDataReader reader = cmd.ExecuteReader();
             if (!reader.Read()) return null;
@@ -120,7 +131,8 @@ namespace LapTrinhWeb.Models
         }
         public void Insert()
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO HopDong VALUES (@mahd,@ngaybd,@ngayhh,@phong,@dakt)", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_HopDong_Insert", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@mahd", MaHopDong);
             cmd.Parameters.AddWithValue("@ngaybd", NgayBatDau);
             cmd.Parameters.AddWithValue("@ngayhh", NgayHetHan);
@@ -131,7 +143,8 @@ namespace LapTrinhWeb.Models
 
         public void Update()
         {
-            SqlCommand cmd = new SqlCommand("UPDATE HopDong SET NgayBatDau=@ngaybd,NgayHetHan=@ngayhh,Phong=@phong,DaKetThuc=@dakt WHERE MaHopDong=@mahd", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_HopDong_Update", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@mahd", MaHopDong);
             cmd.Parameters.AddWithValue("@ngaybd", NgayBatDau);
             cmd.Parameters.AddWithValue("@ngayhh", NgayHetHan);
@@ -141,7 +154,8 @@ namespace LapTrinhWeb.Models
         }
         public void Delete()
         {
-            SqlCommand cmd = new SqlCommand("DELETE FROM HopDong WHERE MaHopDong=@mahd", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_HopDong_Delete", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@mahd", MaHopDong);
             cmd.ExecuteNonQuery();
         }

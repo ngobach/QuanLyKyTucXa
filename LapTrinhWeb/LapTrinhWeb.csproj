@@ -67,6 +67,7 @@
     <Content Include="CTHopDong.aspx" />
     <Content Include="QLHoaDon.aspx" />
     <Content Include="scripts\jquery.easypiechart.js" />
+    <Content Include="styles\bootstrap-theme.min.css" />
     <Content Include="TKHoaDon.aspx" />
     <Content Include="TKHopDong.aspx" />
     <Content Include="QLHopDong.aspx" />

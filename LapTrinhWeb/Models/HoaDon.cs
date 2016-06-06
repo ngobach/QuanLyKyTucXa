@@ -21,10 +21,14 @@ namespace LapTrinhWeb.Models
             DataTable table = new DataTable();
             SqlCommand cmd;
             if (mahd == "")
-                cmd = new SqlCommand("SELECT HoaDon.*,(TienPhong+TienDien+TienNuoc+PhuPhi) AS Tong FROM HoaDon ORDER BY ID DESC ", DB.GetConnection());
+            {
+                cmd = new SqlCommand("WEB_Hoadon_Select", DB.GetConnection());
+                cmd.CommandType = CommandType.StoredProcedure;
+            }
             else
             {
-                cmd = new SqlCommand("SELECT HoaDon.*,(TienPhong+TienDien+TienNuoc+PhuPhi) AS Tong FROM HoaDon WHERE MaHopDong=@mahd ORDER BY ID DESC ", DB.GetConnection());
+                cmd = new SqlCommand("WEB_Hoadon_Select_MaHD", DB.GetConnection());
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@mahd", mahd);
             }
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -33,13 +37,15 @@ namespace LapTrinhWeb.Models
         }
         public static int TongSo()
         {
-            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM HoaDon", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_Hoadon_Select_Tongso", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             return (Int32)cmd.ExecuteScalar();
         }
 
         public static int ChuaTT()
         {
-            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM HoaDon WHERE DaThanhToan='False'", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_Hoadon_Select_ChuaTT", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             return (Int32)cmd.ExecuteScalar();
         }
         public HoaDon()
@@ -54,7 +60,8 @@ namespace LapTrinhWeb.Models
 
         public static HoaDon Find(int id)
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM HoaDon WHERE ID=@id", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_Hoadon_Select_Find", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id", id);
             SqlDataReader reader = cmd.ExecuteReader();
             if (!reader.Read()) return null;
@@ -79,8 +86,8 @@ namespace LapTrinhWeb.Models
         public void Insert()
         {
             SqlCommand cmd = new SqlCommand(
-                "INSERT INTO HoaDon (MaHopDong,Nam,Thang,TienPhong,TienDien,TienNuoc,PhuPhi,ChiTiet,DaThanhToan) VALUES " +
-                "(@mahd,@nam,@thang,@tienphong,@tiendien,@tiennuoc,@phuphi,@chitiet,@datt); SELECT SCOPE_IDENTITY();", DB.GetConnection());
+                "WEB_Hoadon_Insert", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@mahd", MaHopDong);
             cmd.Parameters.AddWithValue("@nam", Nam);
             cmd.Parameters.AddWithValue("@thang", Thang);
@@ -95,14 +102,8 @@ namespace LapTrinhWeb.Models
 
         public void Update()
         {
-            SqlCommand cmd = new SqlCommand("UPDATE HoaDon SET "+
-                "TienPhong=@tienphong," +
-                "TienDien=@tiendien," +
-                "TienNuoc=@tiennuoc," +
-                "PhuPhi=@phuphi," +
-                "ChiTiet=@chitiet," +
-                "DaThanhToan=@datt" +
-                " WHERE ID=@id", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_Hoadon_Update", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id", ID);
             cmd.Parameters.AddWithValue("@tienphong", TienPhong);
             cmd.Parameters.AddWithValue("@tiendien", TienDien);
@@ -115,7 +116,8 @@ namespace LapTrinhWeb.Models
 
         public void Delete()
         {
-            SqlCommand cmd = new SqlCommand("DELETE FROM HoaDon WHERE ID=@id", DB.GetConnection());
+            SqlCommand cmd = new SqlCommand("WEB_Hoadon_Delete", DB.GetConnection());
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id", ID);
             cmd.ExecuteNonQuery();
         }
