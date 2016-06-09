@@ -53,7 +53,7 @@
     </style>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="ContentSection" runat="server">
-    <form runat="server" id="form" class="form-signin">
+    <form runat="server" id="form" class="form-signin" DefaultButton="btnLogin">
         <h2 class="form-signin-heading">Đăng nhập hệ thống</h2>
         <asp:TextBox runat="server" ID="Username" CssClass="form-control" placeholder="Tên đăng nhập" required=""/>
         <asp:TextBox runat="server" TextMode="Password" ID="Password" CssClass="form-control" placeholder="Mật khẩu" required=""/>
@@ -69,6 +69,6 @@
         </div>
         <% } %>
 
-        <asp:LinkButton CssClass="btn btn-block btn-success" runat="server" Text="Đăng nhập" OnClick="DoLogin"/>
+        <asp:LinkButton ID="btnLogin" CssClass="btn btn-block btn-success" runat="server" Text="Đăng nhập" OnClick="DoLogin"/>
     </form>
 </asp:Content>

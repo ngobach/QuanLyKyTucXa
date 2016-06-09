@@ -61,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CTHoaDon.aspx" />
+    <Content Include="Footer.ascx" />
+    <Content Include="Header.ascx" />
     <Content Include="images\logo.png" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
@@ -101,6 +103,20 @@
     </Compile>
     <Compile Include="CTHoaDon.aspx.designer.cs">
       <DependentUpon>CTHoaDon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Footer.ascx.cs">
+      <DependentUpon>Footer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Footer.ascx.designer.cs">
+      <DependentUpon>Footer.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Header.ascx.cs">
+      <DependentUpon>Header.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Header.ascx.designer.cs">
+      <DependentUpon>Header.ascx</DependentUpon>
     </Compile>
     <Compile Include="Models\HoaDon.cs" />
     <Compile Include="Models\HopDong.cs" />
