@@ -14,12 +14,10 @@ namespace LapTrinhWeb.App_Code
         private static SqlConnection _conn;
         public static SqlConnection GetConnection()
         {
-            String str = WebConfigurationManager.ConnectionStrings["Main"].ConnectionString;
-            if (_conn == null || _conn.State == System.Data.ConnectionState.Closed)
-            {
-                _conn = new SqlConnection(str);
-                _conn.Open();
-            }
+            if (_conn != null && _conn.State != System.Data.ConnectionState.Closed) return _conn;
+            var str = "Server=(local);UID=sa;PWD=123456;Database=QLKTX";
+            _conn = new SqlConnection(str);
+            _conn.Open();
             return _conn;
         }
 

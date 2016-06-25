@@ -193,9 +193,9 @@ namespace LapTrinhWeb
             }
             else
             {
-                const string query = "SELECT * FROM SinhVien WHERE MaSV LIKE @kw OR HoTen LIKE @kw";
+                const string query = "SELECT * FROM SinhVien WHERE MaSV LIKE @kw OR dbo.BODAU(HoTen) LIKE @kw";
                 SqlCommand cmd = new SqlCommand(query, DB.GetConnection());
-                cmd.Parameters.AddWithValue("@kw", "%"+txtSearch.Text+"%");
+                cmd.Parameters.AddWithValue("@kw", "%"+txtSearch.Text.ToLower()+"%");
                 SqlDataReader r = cmd.ExecuteReader();
                 if (r.Read() == false)
                 {
@@ -203,13 +203,15 @@ namespace LapTrinhWeb
                     Grid.Visible = false;
                     ResetForm();
                     btnShowAll.Visible = true;
+                    r.Close();
                 }
                 else
                 {
-                    SqlCommand sqlcmd = new SqlCommand(query, DB.GetConnection());
-                    sqlcmd.Parameters.AddWithValue("kw", "%"+txtSearch.Text+"%");
-                    SqlDataAdapter da = new SqlDataAdapter(sqlcmd);
-                    DataTable dt = new DataTable();
+                    r.Close();
+                    var sqlcmd = new SqlCommand(query, DB.GetConnection());
+                    sqlcmd.Parameters.AddWithValue("kw", "%"+txtSearch.Text.ToLower()+"%");
+                    var da = new SqlDataAdapter(sqlcmd);
+                    var dt = new DataTable();
                     da.Fill(dt);
                     Grid.DataSource = dt;
                     Grid.DataBind();
