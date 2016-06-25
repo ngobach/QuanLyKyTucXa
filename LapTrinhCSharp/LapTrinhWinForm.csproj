@@ -81,7 +81,6 @@
   <ItemGroup>
     <Compile Include="DataSet.cs">
       <DependentUpon>DataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DataSet.Designer.cs">
       <AutoGen>True</AutoGen>

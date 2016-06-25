@@ -11,7 +11,7 @@ namespace LapTrinhCSharp
     {
         public const int ERR_CONFLICK = 2627;       // Lỗi trùng khóa chính hoặc khóa unique
         public const int ERR_FK_REFERENCE = 547;    // Lỗi trùng khóa chính hoặc khóa unique
-        public const string CONNECTION_STRING = @"Server=.\SQLEXPRESS;Uid=sa;Pwd=123456;Database=QLKTX";
+        public const string CONNECTION_STRING = @"Server=(local);Uid=sa;Pwd=123456;Database=KTX";
         public static SqlConnection GetConnection()
         {
             SqlConnection conn = new SqlConnection(CONNECTION_STRING);
