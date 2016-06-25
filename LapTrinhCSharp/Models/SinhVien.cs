@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 
-namespace LapTrinhCSharp
+namespace LapTrinhCSharp.Models
 {
     public class SinhVien
     {
@@ -73,6 +69,25 @@ namespace LapTrinhCSharp
                 cmd.Parameters.AddWithValue("@masv", MaSV);
                 cmd.ExecuteNonQuery();
             }
+        }
+
+
+        public static DataTable Search(string hoten, bool exactSearch)
+        {
+            var table = new DataTable();
+            using (var con = DB.GetConnection())
+            {
+                var cc = new SqlCommand("SELECT dbo.BODAU(@param)", con);
+                cc.Parameters.AddWithValue("@param", hoten);
+                hoten = cc.ExecuteScalar().ToString();
+                if (!exactSearch)
+                    hoten = "%" + hoten + "%";
+                var cmd = new SqlCommand("SELECT * FROM [SinhVien] WHERE dbo.BODAU(HoTen) LIKE @hoten", con);
+                cmd.Parameters.AddWithValue("@hoten", hoten.ToLower());
+                using (var adapter = new SqlDataAdapter(cmd))
+                    adapter.Fill(table);
+            }
+            return table;
         }
     }
 }

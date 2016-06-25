@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="DataSet" targetNamespace="http://tempuri.org/DataSet.xsd" xmlns:mstns="http://tempuri.org/DataSet.xsd" xmlns="http://tempuri.org/DataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="MainDataset" targetNamespace="http://tempuri.org/DataSet.xsd" xmlns:mstns="http://tempuri.org/DataSet.xsd" xmlns="http://tempuri.org/DataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="2" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QLKTXConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QLKTXConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.LapTrinhCSharp.Properties.Settings.GlobalReference.Default.QLKTXConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="CNPMConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="CNPMConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.LapTrinhCSharp.Properties.Settings.GlobalReference.Default.CNPMConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="KTXConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="KTXConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.LapTrinhCSharp.Properties.Settings.GlobalReference.Default.KTXConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SinhVienTableAdapter" GeneratorDataComponentClassName="SinhVienTableAdapter" Name="SinhVien" UserDataComponentName="SinhVienTableAdapter">
@@ -175,10 +177,16 @@ SELECT ID, MaHopDong, Nam, Thang, TienPhong, TienDien, TienNuoc, PhuPhi, ChiTiet
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="HopDongTableAdapter" GeneratorDataComponentClassName="HopDongTableAdapter" Name="HopDong" UserDataComponentName="HopDongTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="QLKTXConnectionString (Settings)" DbObjectName="QLKTX.dbo.HopDong_DanhSach" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="KTXConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText />
+                    <Parameters />
+                  </DbCommand>
+                </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="true">
-                    <CommandText>HopDong_DanhSach</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT HopDong.MaHopDong, HopDong.NgayBatDau, HopDong.NgayHetHan, CAST(IIF(HopDong.NgayHetHan &lt; GETDATE(),1,0) AS BIT) AS DaHetHan, HopDong.DaKetThuc, SinhVien.HoTen SinhVien, Phong.ID MaPhong, Phong.Ten Phong, Phong.ToiDa SoNguoi FROM HopDong JOIN Phong ON HopDong.Phong = Phong.ID JOIN SinhVien ON HopDong.SinhVien = SinhVien.MaSV</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -186,10 +194,35 @@ SELECT ID, MaHopDong, Nam, Thang, TienPhong, TienDien, TienNuoc, PhuPhi, ChiTiet
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="MaHopDong" DataSetColumn="MaHopDong" />
+              <Mapping SourceColumn="SinhVien" DataSetColumn="SinhVien" />
               <Mapping SourceColumn="NgayBatDau" DataSetColumn="NgayBatDau" />
               <Mapping SourceColumn="NgayHetHan" DataSetColumn="NgayHetHan" />
-              <Mapping SourceColumn="Phong" DataSetColumn="Phong" />
               <Mapping SourceColumn="DaKetThuc" DataSetColumn="DaKetThuc" />
+              <Mapping SourceColumn="Phong" DataSetColumn="Phong" />
+              <Mapping SourceColumn="SoNguoi" DataSetColumn="SoNguoi" />
+              <Mapping SourceColumn="MaPhong" DataSetColumn="MaPhong" />
+              <Mapping SourceColumn="DaHetHan" DataSetColumn="DaHetHan" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PhongTableAdapter" GeneratorDataComponentClassName="PhongTableAdapter" Name="Phong" UserDataComponentName="PhongTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="KTXConnectionString (Settings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="All" GetMethodModifier="Public" GetMethodName="All" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="All" UserSourceName="All">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Phong.ID, Phong.Ten, Phong.ToiDa, Nha.Ten AS Nha
+FROM            Phong INNER JOIN
+                         Nha ON Phong.MaNha = Nha.ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Ten" DataSetColumn="Ten" />
+              <Mapping SourceColumn="ToiDa" DataSetColumn="ToiDa" />
+              <Mapping SourceColumn="Nha" DataSetColumn="Nha" />
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -198,10 +231,10 @@ SELECT ID, MaHopDong, Nam, Thang, TienPhong, TienDien, TienNuoc, PhuPhi, ChiTiet
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet" msprop:Generator_UserDSName="DataSet">
+  <xs:element name="MainDataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="MainDataset" msprop:Generator_UserDSName="MainDataset">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="SinhVien" msprop:Generator_TableClassName="SinhVienDataTable" msprop:Generator_TableVarName="tableSinhVien" msprop:Generator_RowChangedName="SinhVienRowChanged" msprop:Generator_TablePropName="SinhVien" msprop:Generator_RowDeletingName="SinhVienRowDeleting" msprop:Generator_RowChangingName="SinhVienRowChanging" msprop:Generator_RowEvHandlerName="SinhVienRowChangeEventHandler" msprop:Generator_RowDeletedName="SinhVienRowDeleted" msprop:Generator_RowClassName="SinhVienRow" msprop:Generator_UserTableName="SinhVien" msprop:Generator_RowEvArgName="SinhVienRowChangeEvent">
+        <xs:element name="SinhVien" msprop:Generator_TableClassName="SinhVienDataTable" msprop:Generator_TableVarName="tableSinhVien" msprop:Generator_TablePropName="SinhVien" msprop:Generator_RowDeletingName="SinhVienRowDeleting" msprop:Generator_RowChangingName="SinhVienRowChanging" msprop:Generator_RowEvHandlerName="SinhVienRowChangeEventHandler" msprop:Generator_RowDeletedName="SinhVienRowDeleted" msprop:Generator_UserTableName="SinhVien" msprop:Generator_RowChangedName="SinhVienRowChanged" msprop:Generator_RowEvArgName="SinhVienRowChangeEvent" msprop:Generator_RowClassName="SinhVienRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MaSV" msprop:Generator_ColumnVarNameInTable="columnMaSV" msprop:Generator_ColumnPropNameInRow="MaSV" msprop:Generator_ColumnPropNameInTable="MaSVColumn" msprop:Generator_UserColumnName="MaSV">
@@ -257,7 +290,7 @@ SELECT ID, MaHopDong, Nam, Thang, TienPhong, TienDien, TienNuoc, PhuPhi, ChiTiet
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="HoaDon" msprop:Generator_TableClassName="HoaDonDataTable" msprop:Generator_TableVarName="tableHoaDon" msprop:Generator_RowChangedName="HoaDonRowChanged" msprop:Generator_TablePropName="HoaDon" msprop:Generator_RowDeletingName="HoaDonRowDeleting" msprop:Generator_RowChangingName="HoaDonRowChanging" msprop:Generator_RowEvHandlerName="HoaDonRowChangeEventHandler" msprop:Generator_RowDeletedName="HoaDonRowDeleted" msprop:Generator_RowClassName="HoaDonRow" msprop:Generator_UserTableName="HoaDon" msprop:Generator_RowEvArgName="HoaDonRowChangeEvent">
+        <xs:element name="HoaDon" msprop:Generator_TableClassName="HoaDonDataTable" msprop:Generator_TableVarName="tableHoaDon" msprop:Generator_TablePropName="HoaDon" msprop:Generator_RowDeletingName="HoaDonRowDeleting" msprop:Generator_RowChangingName="HoaDonRowChanging" msprop:Generator_RowEvHandlerName="HoaDonRowChangeEventHandler" msprop:Generator_RowDeletedName="HoaDonRowDeleted" msprop:Generator_UserTableName="HoaDon" msprop:Generator_RowChangedName="HoaDonRowChanged" msprop:Generator_RowEvArgName="HoaDonRowChangeEvent" msprop:Generator_RowClassName="HoaDonRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -285,7 +318,7 @@ SELECT ID, MaHopDong, Nam, Thang, TienPhong, TienDien, TienNuoc, PhuPhi, ChiTiet
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="HopDong" msprop:Generator_TableClassName="HopDongDataTable" msprop:Generator_TableVarName="tableHopDong" msprop:Generator_RowChangedName="HopDongRowChanged" msprop:Generator_TablePropName="HopDong" msprop:Generator_RowDeletingName="HopDongRowDeleting" msprop:Generator_RowChangingName="HopDongRowChanging" msprop:Generator_RowEvHandlerName="HopDongRowChangeEventHandler" msprop:Generator_RowDeletedName="HopDongRowDeleted" msprop:Generator_RowClassName="HopDongRow" msprop:Generator_UserTableName="HopDong" msprop:Generator_RowEvArgName="HopDongRowChangeEvent">
+        <xs:element name="HopDong" msprop:Generator_TableClassName="HopDongDataTable" msprop:Generator_TableVarName="tableHopDong" msprop:Generator_TablePropName="HopDong" msprop:Generator_RowDeletingName="HopDongRowDeleting" msprop:Generator_RowChangingName="HopDongRowChanging" msprop:Generator_RowEvHandlerName="HopDongRowChangeEventHandler" msprop:Generator_RowDeletedName="HopDongRowDeleted" msprop:Generator_UserTableName="HopDong" msprop:Generator_RowChangedName="HopDongRowChanged" msprop:Generator_RowEvArgName="HopDongRowChangeEvent" msprop:Generator_RowClassName="HopDongRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MaHopDong" msprop:Generator_ColumnVarNameInTable="columnMaHopDong" msprop:Generator_ColumnPropNameInRow="MaHopDong" msprop:Generator_ColumnPropNameInTable="MaHopDongColumn" msprop:Generator_UserColumnName="MaHopDong">
@@ -295,13 +328,48 @@ SELECT ID, MaHopDong, Nam, Thang, TienPhong, TienDien, TienNuoc, PhuPhi, ChiTiet
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="SinhVien" msprop:Generator_ColumnVarNameInTable="columnSinhVien" msprop:Generator_ColumnPropNameInRow="SinhVien" msprop:Generator_ColumnPropNameInTable="SinhVienColumn" msprop:Generator_UserColumnName="SinhVien">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="NgayBatDau" msprop:Generator_ColumnVarNameInTable="columnNgayBatDau" msprop:Generator_ColumnPropNameInRow="NgayBatDau" msprop:Generator_ColumnPropNameInTable="NgayBatDauColumn" msprop:Generator_UserColumnName="NgayBatDau" type="xs:dateTime" />
               <xs:element name="NgayHetHan" msprop:Generator_ColumnVarNameInTable="columnNgayHetHan" msprop:Generator_ColumnPropNameInRow="NgayHetHan" msprop:Generator_ColumnPropNameInTable="NgayHetHanColumn" msprop:Generator_UserColumnName="NgayHetHan" type="xs:dateTime" />
-              <xs:element name="Phong" msprop:Generator_ColumnVarNameInTable="columnPhong" msprop:Generator_ColumnPropNameInRow="Phong" msprop:Generator_ColumnPropNameInTable="PhongColumn" msprop:Generator_UserColumnName="Phong" type="xs:int" />
+              <xs:element name="DaHetHan" msprop:Generator_ColumnVarNameInTable="columnDaHetHan" msprop:Generator_ColumnPropNameInRow="DaHetHan" msprop:Generator_ColumnPropNameInTable="DaHetHanColumn" msprop:Generator_UserColumnName="DaHetHan" type="xs:boolean" minOccurs="0" />
               <xs:element name="DaKetThuc" msprop:Generator_ColumnVarNameInTable="columnDaKetThuc" msprop:Generator_ColumnPropNameInRow="DaKetThuc" msprop:Generator_ColumnPropNameInTable="DaKetThucColumn" msprop:Generator_UserColumnName="DaKetThuc" type="xs:boolean" />
-              <xs:element name="DaHetHan" msprop:Generator_ColumnVarNameInTable="columnDaHetHan" msprop:Generator_ColumnPropNameInRow="DaHetHan" msprop:Generator_ColumnPropNameInTable="DaHetHanColumn" msprop:Generator_UserColumnName="DaHetHan" type="xs:string" minOccurs="0" />
-              <xs:element name="SoNguoi" msprop:Generator_ColumnVarNameInTable="columnSoNguoi" msprop:Generator_ColumnPropNameInRow="SoNguoi" msprop:Generator_ColumnPropNameInTable="SoNguoiColumn" msprop:Generator_UserColumnName="SoNguoi" type="xs:string" minOccurs="0" />
-              <xs:element name="TenPhong" msprop:Generator_ColumnVarNameInTable="columnTenPhong" msprop:Generator_ColumnPropNameInRow="TenPhong" msprop:Generator_ColumnPropNameInTable="TenPhongColumn" msprop:Generator_UserColumnName="TenPhong" type="xs:string" minOccurs="0" />
+              <xs:element name="Phong" msprop:Generator_ColumnVarNameInTable="columnPhong" msprop:Generator_ColumnPropNameInRow="Phong" msprop:Generator_ColumnPropNameInTable="PhongColumn" msprop:Generator_UserColumnName="Phong" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SoNguoi" msprop:Generator_ColumnVarNameInTable="columnSoNguoi" msprop:Generator_ColumnPropNameInRow="SoNguoi" msprop:Generator_ColumnPropNameInTable="SoNguoiColumn" msprop:Generator_UserColumnName="SoNguoi" type="xs:int" minOccurs="0" />
+              <xs:element name="MaPhong" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnMaPhong" msprop:Generator_ColumnPropNameInRow="MaPhong" msprop:Generator_ColumnPropNameInTable="MaPhongColumn" msprop:Generator_UserColumnName="MaPhong" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Phong" msprop:Generator_TableClassName="PhongDataTable" msprop:Generator_TableVarName="tablePhong" msprop:Generator_TablePropName="Phong" msprop:Generator_RowDeletingName="PhongRowDeleting" msprop:Generator_RowChangingName="PhongRowChanging" msprop:Generator_RowEvHandlerName="PhongRowChangeEventHandler" msprop:Generator_RowDeletedName="PhongRowDeleted" msprop:Generator_UserTableName="Phong" msprop:Generator_RowChangedName="PhongRowChanged" msprop:Generator_RowEvArgName="PhongRowChangeEvent" msprop:Generator_RowClassName="PhongRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
+              <xs:element name="Ten" msprop:Generator_ColumnVarNameInTable="columnTen" msprop:Generator_ColumnPropNameInRow="Ten" msprop:Generator_ColumnPropNameInTable="TenColumn" msprop:Generator_UserColumnName="Ten">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ToiDa" msprop:Generator_ColumnVarNameInTable="columnToiDa" msprop:Generator_ColumnPropNameInRow="ToiDa" msprop:Generator_ColumnPropNameInTable="ToiDaColumn" msprop:Generator_UserColumnName="ToiDa" type="xs:int" />
+              <xs:element name="Nha" msprop:Generator_ColumnVarNameInTable="columnNha" msprop:Generator_ColumnPropNameInRow="Nha" msprop:Generator_ColumnPropNameInTable="NhaColumn" msprop:Generator_UserColumnName="Nha">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -321,10 +389,9 @@ SELECT ID, MaHopDong, Nam, Thang, TienPhong, TienDien, TienNuoc, PhuPhi, ChiTiet
       <xs:selector xpath=".//mstns:HopDong" />
       <xs:field xpath="mstns:MaHopDong" />
     </xs:unique>
+    <xs:unique name="Phong_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Phong" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
   </xs:element>
-  <xs:annotation>
-    <xs:appinfo>
-      <msdata:Relationship name="FK_HoaDon_HopDong" msdata:parent="HopDong" msdata:child="HoaDon" msdata:parentkey="MaHopDong" msdata:childkey="MaHopDong" msprop:Generator_UserChildTable="HoaDon" msprop:Generator_ChildPropName="GetHoaDonRows" msprop:Generator_UserRelationName="FK_HoaDon_HopDong" msprop:Generator_ParentPropName="HopDongRow" msprop:Generator_RelationVarName="relationFK_HoaDon_HopDong" msprop:Generator_UserParentTable="HopDong" />
-    </xs:appinfo>
-  </xs:annotation>
 </xs:schema>

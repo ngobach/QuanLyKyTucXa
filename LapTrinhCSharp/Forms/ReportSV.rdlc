@@ -6,33 +6,33 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.19792in</Width>
+              <Width>1.16146in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>0.96354in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>0.96354in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>0.96354in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>0.96354in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>0.96354in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>0.96354in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>0.96354in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.27083in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -46,7 +46,7 @@
                               <Value>Mã sinh viên</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>11pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
@@ -82,7 +82,7 @@
                               <Value>Họ Tên</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>11pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
@@ -118,7 +118,7 @@
                               <Value>Số ĐT</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>11pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
@@ -154,7 +154,7 @@
                               <Value>Ngày sinh</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>11pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
@@ -190,7 +190,7 @@
                               <Value>Giới tính</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>11pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
@@ -226,7 +226,7 @@
                               <Value>Quê quán</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>11pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
@@ -262,7 +262,7 @@
                               <Value>Lớp</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>11pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
@@ -298,7 +298,7 @@
                               <Value>Khoa</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>11pt</FontSize>
+                                <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Color>White</Color>
                               </Style>
@@ -325,7 +325,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.27083in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -339,6 +339,7 @@
                               <Value>=Fields!MaSV.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>8pt</FontSize>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -372,6 +373,7 @@
                               <Value>=Fields!HoTen.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>8pt</FontSize>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -405,6 +407,7 @@
                               <Value>=Fields!SoDienThoai.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>8pt</FontSize>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -438,6 +441,7 @@
                               <Value>=Fields!NgaySinh.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>8pt</FontSize>
                                 <Format>dd/MM/yyyy</Format>
                                 <Color>#4d4d4d</Color>
                               </Style>
@@ -458,7 +462,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -473,6 +476,7 @@
                               <Value>=Fields!GioiTinh.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>8pt</FontSize>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -506,6 +510,7 @@
                               <Value>=Fields!QueQuan.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>8pt</FontSize>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -539,6 +544,7 @@
                               <Value>=Fields!Lop.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>8pt</FontSize>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -572,6 +578,7 @@
                               <Value>=Fields!Khoa.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
+                                <FontSize>8pt</FontSize>
                                 <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
@@ -620,8 +627,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet</DataSetName>
-        <Height>0.5in</Height>
-        <Width>8.19792in</Width>
+        <Height>0.54167in</Height>
+        <Width>7.90625in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -632,7 +639,7 @@
     <Height>1in</Height>
     <Style />
   </Body>
-  <Width>8.19792in</Width>
+  <Width>7.95834in</Width>
   <Page>
     <PageHeader>
       <Height>1in</Height>
@@ -659,7 +666,7 @@
           </Paragraphs>
           <Top>0.29167in</Top>
           <Height>0.63889in</Height>
-          <Width>8.19792in</Width>
+          <Width>7.90625in</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -713,8 +720,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.05556in</Top>
-          <Left>5.19792in</Left>
+          <Top>0.04167in</Top>
+          <Left>5.01563in</Left>
           <Height>0.25in</Height>
           <Width>2.87375in</Width>
           <Style>

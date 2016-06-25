@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
-namespace LapTrinhCSharp
+namespace LapTrinhCSharp.Forms
 {
     public partial class FormMain : Form
     {
@@ -40,7 +34,7 @@ namespace LapTrinhCSharp
 
         private void btnTimKiemSV_Click(object sender, EventArgs e)
         {
-            ShowForm(new FormTimKiemSV());
+            ShowForm(new FormQLVatTu());
         }
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)

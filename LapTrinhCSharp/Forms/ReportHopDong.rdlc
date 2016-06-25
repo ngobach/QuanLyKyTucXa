@@ -291,7 +291,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!TenPhong.Value</Value>
+                              <Value>=Fields!Phong.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <Color>#4d4d4d</Color>
@@ -414,7 +414,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -546,7 +545,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>d1aba389-7d24-477e-9656-8aa0d9d3801d</rd:DataSourceID>
+      <rd:DataSourceID>f193f71b-adbd-48b5-ae3f-eb69180332a6</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -560,6 +559,10 @@
           <DataField>MaHopDong</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="SinhVien">
+          <DataField>SinhVien</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="NgayBatDau">
           <DataField>NgayBatDau</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
@@ -568,30 +571,22 @@
           <DataField>NgayHetHan</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="Phong">
-          <DataField>Phong</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
         <Field Name="DaKetThuc">
           <DataField>DaKetThuc</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
-        <Field Name="DaHetHan">
-          <DataField>DaHetHan</DataField>
+        <Field Name="Phong">
+          <DataField>Phong</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="SoNguoi">
           <DataField>SoNguoi</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="TenPhong">
-          <DataField>TenPhong</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSet</rd:DataSetName>
-        <rd:SchemaPath>E:\My Documents\Visual Studio\QLKTX\LapTrinhCSharp\DataSet.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\Visual Studio\QLKTX\LapTrinhCSharp\DataSet.xsd</rd:SchemaPath>
         <rd:TableName>HopDong</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

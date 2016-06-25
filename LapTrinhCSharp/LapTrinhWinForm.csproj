@@ -61,6 +61,22 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocX, Version=1.0.0.19, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.1.0.0.19\lib\net40\DocX.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
@@ -79,13 +95,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSet.cs">
-      <DependentUpon>DataSet.xsd</DependentUpon>
+    <Compile Include="CTPhong.cs">
+      <DependentUpon>EzLife.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet.Designer.cs">
+    <Compile Include="EzLife.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet.xsd</DependentUpon>
+      <DependentUpon>EzLife.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EzLife.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EzLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EzLife.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EzLife.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="HoaDon.cs">
+      <DependentUpon>EzLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HopDong.cs">
+      <DependentUpon>EzLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainDataset.cs">
+      <DependentUpon>MainDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MainDataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainDataset.xsd</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormLogin.cs">
       <SubType>Form</SubType>
@@ -110,6 +150,12 @@
     </Compile>
     <Compile Include="Forms\FormQLHopDong.Designer.cs">
       <DependentUpon>FormQLHopDong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormQLVatTu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormQLVatTu.Designer.cs">
+      <DependentUpon>FormQLVatTu.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormQLPhong.cs">
       <SubType>Form</SubType>
@@ -159,20 +205,43 @@
     <Compile Include="Forms\FormUser.Designer.cs">
       <DependentUpon>FormUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Nha.cs" />
+    <Compile Include="Models\VatTu.cs" />
     <Compile Include="Models\Phong.cs" />
     <Compile Include="Models\HoaDon.cs" />
     <Compile Include="Models\HopDong.cs" />
     <Compile Include="Models\SinhVien.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Nha.cs">
+      <DependentUpon>EzLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Phong.cs">
+      <DependentUpon>EzLife.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QLKTXDataSet.cs">
+      <DependentUpon>QLKTXDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="QLKTXDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QLKTXDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SinhVien.cs">
+      <DependentUpon>EzLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>EzLife.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>EzLife.tt</DependentUpon>
+    </Compile>
     <Compile Include="Utils\DB.cs" />
     <Compile Include="Utils\Utils.cs" />
+    <Compile Include="VatTu.cs">
+      <DependentUpon>EzLife.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -184,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormQLHopDong.resx">
       <DependentUpon>FormQLHopDong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormQLVatTu.resx">
+      <DependentUpon>FormQLVatTu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormQLPhong.resx">
       <DependentUpon>FormQLPhong.cs</DependentUpon>
@@ -221,18 +293,28 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="DataSet.xsc">
-      <DependentUpon>DataSet.xsd</DependentUpon>
+    <EntityDeploy Include="EzLife.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EzLife.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EzLife.edmx.diagram">
+      <DependentUpon>EzLife.edmx</DependentUpon>
     </None>
-    <None Include="DataSet.xsd">
+    <None Include="hopdong.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="MainDataset.xsc">
+      <DependentUpon>MainDataset.xsd</DependentUpon>
+    </None>
+    <None Include="MainDataset.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>MainDataset.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DataSet.xss">
-      <DependentUpon>DataSet.xsd</DependentUpon>
+    <None Include="MainDataset.xss">
+      <DependentUpon>MainDataset.xsd</DependentUpon>
     </None>
-    <None Include="LapTrinhCSharp_TemporaryKey.pfx" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -281,6 +363,20 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EzLife.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EzLife.edmx</DependentUpon>
+      <LastGenOutput>EzLife.Context.cs</LastGenOutput>
+      <CustomToolNamespace>EzLife</CustomToolNamespace>
+    </Content>
+    <Content Include="EzLife.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EzLife.edmx</DependentUpon>
+      <LastGenOutput>EzLife.cs</LastGenOutput>
+      <CustomToolNamespace>EzLife</CustomToolNamespace>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

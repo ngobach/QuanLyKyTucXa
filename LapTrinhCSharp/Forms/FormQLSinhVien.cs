@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using LapTrinhCSharp.Forms;
+using LapTrinhCSharp.Models;
 
 namespace LapTrinhCSharp
 {
@@ -180,5 +182,11 @@ namespace LapTrinhCSharp
             (new FormReportSV()).ShowDialog();
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            var form = new FormTimKiemSV();
+            form.ShowDialog();
+            MessageBox.Show(form.SelectedItem);
+        }
     }
 }

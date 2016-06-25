@@ -1,4 +1,6 @@
-﻿namespace LapTrinhCSharp
+﻿using LapTrinhCSharp.MainDatasetTableAdapters;
+
+namespace LapTrinhCSharp.Forms
 {
     partial class FormReportSV
     {
@@ -31,9 +33,9 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.SinhVienBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DataSet = new LapTrinhCSharp.DataSet();
+            this.DataSet = new LapTrinhCSharp.MainDataset();
             this.report = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.SinhVienTableAdapter = new LapTrinhCSharp.DataSetTableAdapters.SinhVienTableAdapter();
+            this.SinhVienTableAdapter = new LapTrinhCSharp.MainDatasetTableAdapters.SinhVienTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.SinhVienBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataSet)).BeginInit();
             this.SuspendLayout();
@@ -87,7 +89,7 @@
 
         private Microsoft.Reporting.WinForms.ReportViewer report;
         private System.Windows.Forms.BindingSource SinhVienBindingSource;
-        private DataSet DataSet;
-        private DataSetTableAdapters.SinhVienTableAdapter SinhVienTableAdapter;
+        private MainDataset DataSet;
+        private SinhVienTableAdapter SinhVienTableAdapter;
     }
 }

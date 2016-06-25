@@ -62,6 +62,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnReport = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             this.SuspendLayout();
@@ -382,11 +383,24 @@
             this.btnReport.UseVisualStyleBackColor = true;
             this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.Color.Blue;
+            this.btnSearch.Location = new System.Drawing.Point(488, 435);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(126, 40);
+            this.btnSearch.TabIndex = 102;
+            this.btnSearch.Text = "Tìm Kiếm";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // FormQLSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(758, 487);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnReport);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnUpdate);
@@ -440,6 +454,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.Button btnReport;
+        private System.Windows.Forms.Button btnSearch;
     }
 }
 

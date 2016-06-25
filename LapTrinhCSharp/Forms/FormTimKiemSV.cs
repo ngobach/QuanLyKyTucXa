@@ -1,30 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using LapTrinhCSharp.Models;
 
-namespace LapTrinhCSharp
+namespace LapTrinhCSharp.Forms
 {
     public partial class FormTimKiemSV : Form
     {
-        private DataTable table;
-
         public FormTimKiemSV()
         {
             InitializeComponent();
         }
+
+        private bool ExactSearch => radExcact.Checked;
+
+        public string SelectedItem { get; private set; }
         /**
          * Nạp dữ liệu từ SQL vào DataGridView
          * 
          **/
         private void LoadGrid()
         {
-            gridView.DataSource = table = SinhVien.All();
+            gridView.DataSource = SinhVien.All();
         }
 
         /**
@@ -35,8 +31,8 @@ namespace LapTrinhCSharp
         {
             if (gridView.SelectedRows.Count == 0)
                 return;
-            DataGridViewRow row = gridView.SelectedRows[0];
-            txtMaSV.Text = row.Cells["MaSV"].Value.ToString();
+            var row = gridView.SelectedRows[0];
+            SelectedItem = txtMaSV.Text = row.Cells["MaSV"].Value.ToString();
             txtHoTen.Text = row.Cells["HoTen"].Value.ToString();
             txtQueQuan.Text = row.Cells["QueQuan"].Value.ToString();
             txtGioiTinh.Text = row.Cells["GioiTinh"].Value.ToString();
@@ -53,18 +49,18 @@ namespace LapTrinhCSharp
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            List<String> filters = new List<string>();
-            if (txtFMaSV.Text.Length > 0)
-                filters.Add(String.Format("MaSV LIKE '*{0}*'", Utils.EscapeLikeValue(txtFMaSV.Text)));
-            if (txtFHoTen.Text.Length > 0)
-                filters.Add(String.Format("HoTen LIKE '*{0}*'", Utils.EscapeLikeValue(txtFHoTen.Text)));
-            DataView dataView = table.DefaultView;
-            dataView.RowFilter = String.Join(" AND ", filters.ToArray());
+            gridView.DataSource = SinhVien.Search(txtFHoTen.Text, ExactSearch);
         }
 
         private void gridView_SelectionChanged(object sender, EventArgs e)
         {
             LoadFormData();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Tìm kiếm chính xác sẽ tìm những sinh viên có họ tên khớp với nhập vào.\n" +
+                            "Tìm kiểm một phần sẽ tìm những sinh viên có họ tên chỉ khớp một phần với nội dung tìm kiếm!", "Giải thích", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

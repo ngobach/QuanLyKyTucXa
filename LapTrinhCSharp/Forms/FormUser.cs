@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using LapTrinhCSharp.Models;
 
 namespace LapTrinhCSharp
 {

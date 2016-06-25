@@ -1,4 +1,6 @@
-﻿namespace LapTrinhCSharp
+﻿using LapTrinhCSharp.MainDatasetTableAdapters;
+
+namespace LapTrinhCSharp.Forms
 {
     partial class FormReportHoaDon
     {
@@ -30,10 +32,10 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.DataSet = new LapTrinhCSharp.DataSet();
+            this.DataSet = new LapTrinhCSharp.MainDataset();
             this.report = new Microsoft.Reporting.WinForms.ReportViewer();
             this.HoaDonBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.HoaDonTableAdapter = new LapTrinhCSharp.DataSetTableAdapters.HoaDonTableAdapter();
+            this.HoaDonTableAdapter = new LapTrinhCSharp.MainDatasetTableAdapters.HoaDonTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HoaDonBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -86,8 +88,8 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer report;
-        private DataSet DataSet;
+        private MainDataset DataSet;
         private System.Windows.Forms.BindingSource HoaDonBindingSource;
-        private DataSetTableAdapters.HoaDonTableAdapter HoaDonTableAdapter;
+        private HoaDonTableAdapter HoaDonTableAdapter;
     }
 }

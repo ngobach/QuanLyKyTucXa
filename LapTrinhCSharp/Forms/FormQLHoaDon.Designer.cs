@@ -1,4 +1,7 @@
-﻿namespace LapTrinhCSharp
+﻿using System.Data;
+using LapTrinhCSharp.MainDatasetTableAdapters;
+
+namespace LapTrinhCSharp.Forms
 {
     partial class FormQLHoaDon
     {
@@ -41,9 +44,7 @@
             this.Tongtien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dathanhtoan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Chitiet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataSet = new LapTrinhCSharp.DataSet();
             this.sinhVienBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sinhVienTableAdapter = new LapTrinhCSharp.DataSetTableAdapters.SinhVienTableAdapter();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtNam = new System.Windows.Forms.TextBox();
@@ -70,7 +71,6 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnBaocao = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sinhVienBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -191,19 +191,9 @@
             this.Chitiet.ReadOnly = true;
             this.Chitiet.Visible = false;
             // 
-            // dataSet
-            // 
-            this.dataSet.DataSetName = "DataSet";
-            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // sinhVienBindingSource
             // 
             this.sinhVienBindingSource.DataMember = "SinhVien";
-            this.sinhVienBindingSource.DataSource = this.dataSet;
-            // 
-            // sinhVienTableAdapter
-            // 
-            this.sinhVienTableAdapter.ClearBeforeFill = true;
             // 
             // groupBox1
             // 
@@ -454,10 +444,10 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Grid);
             this.Name = "FormQLHoaDon";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý hóa đơn";
             this.Load += new System.EventHandler(this.QLHopDong_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sinhVienBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -470,9 +460,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView Grid;
-        private DataSet dataSet;
         private System.Windows.Forms.BindingSource sinhVienBindingSource;
-        private DataSetTableAdapters.SinhVienTableAdapter sinhVienTableAdapter;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtPhuphi;

@@ -1,4 +1,4 @@
-﻿namespace LapTrinhCSharp
+﻿namespace LapTrinhCSharp.Forms
 {
     partial class FormMain
     {
@@ -180,7 +180,7 @@
             this.btnTimKiemSV.Name = "btnTimKiemSV";
             this.btnTimKiemSV.Size = new System.Drawing.Size(268, 71);
             this.btnTimKiemSV.TabIndex = 3;
-            this.btnTimKiemSV.Text = "Tìm kiếm Sinh Viên";
+            this.btnTimKiemSV.Text = "Quản lý vật tư";
             this.btnTimKiemSV.UseVisualStyleBackColor = true;
             this.btnTimKiemSV.Click += new System.EventHandler(this.btnTimKiemSV_Click);
             // 

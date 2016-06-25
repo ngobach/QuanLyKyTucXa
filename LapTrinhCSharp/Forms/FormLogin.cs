@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using LapTrinhCSharp.Forms;
+using LapTrinhCSharp.Models;
 
 namespace LapTrinhCSharp
 {
