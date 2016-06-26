@@ -1464,6 +1464,8 @@ namespace LapTrinhCSharp {
             
             private global::System.Data.DataColumn columnPhong;
             
+            private global::System.Data.DataColumn columnTongTien;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ReportHoaDonDataTable() {
@@ -1587,6 +1589,14 @@ namespace LapTrinhCSharp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TongTienColumn {
+                get {
+                    return this.columnTongTien;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1622,7 +1632,7 @@ namespace LapTrinhCSharp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ReportHoaDonRow AddReportHoaDonRow(int MaPhong, int Nam, int Thang, double TienPhong, double TienDien, double TienNuoc, double PhuPhi, string ChiTiet, bool DaThanhToan, string Phong) {
+            public ReportHoaDonRow AddReportHoaDonRow(int MaPhong, int Nam, int Thang, double TienPhong, double TienDien, double TienNuoc, double PhuPhi, string ChiTiet, bool DaThanhToan, string Phong, double TongTien) {
                 ReportHoaDonRow rowReportHoaDonRow = ((ReportHoaDonRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1635,7 +1645,8 @@ namespace LapTrinhCSharp {
                         PhuPhi,
                         ChiTiet,
                         DaThanhToan,
-                        Phong};
+                        Phong,
+                        TongTien};
                 rowReportHoaDonRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowReportHoaDonRow);
                 return rowReportHoaDonRow;
@@ -1678,6 +1689,7 @@ namespace LapTrinhCSharp {
                 this.columnChiTiet = base.Columns["ChiTiet"];
                 this.columnDaThanhToan = base.Columns["DaThanhToan"];
                 this.columnPhong = base.Columns["Phong"];
+                this.columnTongTien = base.Columns["TongTien"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1705,6 +1717,8 @@ namespace LapTrinhCSharp {
                 base.Columns.Add(this.columnDaThanhToan);
                 this.columnPhong = new global::System.Data.DataColumn("Phong", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPhong);
+                this.columnTongTien = new global::System.Data.DataColumn("TongTien", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTongTien);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnMaPhong,
                                 this.columnNam,
@@ -1725,6 +1739,7 @@ namespace LapTrinhCSharp {
                 this.columnDaThanhToan.AllowDBNull = false;
                 this.columnPhong.AllowDBNull = false;
                 this.columnPhong.MaxLength = 20;
+                this.columnTongTien.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2320,6 +2335,22 @@ namespace LapTrinhCSharp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double TongTien {
+                get {
+                    try {
+                        return ((double)(this[this.tableReportHoaDon.TongTienColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TongTien\' in table \'ReportHoaDon\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportHoaDon.TongTienColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsChiTietNull() {
                 return this.IsNull(this.tableReportHoaDon.ChiTietColumn);
             }
@@ -2328,6 +2359,18 @@ namespace LapTrinhCSharp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetChiTietNull() {
                 this[this.tableReportHoaDon.ChiTietColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTongTienNull() {
+                return this.IsNull(this.tableReportHoaDon.TongTienColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTongTienNull() {
+                this[this.tableReportHoaDon.TongTienColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3445,6 +3488,7 @@ SELECT MaSV, HoTen, SoDienThoai, NgaySinh, GioiTinh, QueQuan, Lop, Khoa FROM Sin
             tableMapping.ColumnMappings.Add("ChiTiet", "ChiTiet");
             tableMapping.ColumnMappings.Add("DaThanhToan", "DaThanhToan");
             tableMapping.ColumnMappings.Add("Phong", "Phong");
+            tableMapping.ColumnMappings.Add("TongTien", "TongTien");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -3461,8 +3505,9 @@ SELECT MaSV, HoTen, SoDienThoai, NgaySinh, GioiTinh, QueQuan, Lop, Khoa FROM Sin
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT HoaDon.*, Phong.Ten Phong FROM HoaDon JOIN Phong ON HoaDon.MaPhong = Phong" +
-                ".ID";
+            this._commandCollection[0].CommandText = "SELECT HoaDon.*, HoaDon.TienPhong + HoaDon.TienNuoc + HoaDon.TienDien + HoaDon.Ph" +
+                "uPhi AS TongTien, Phong.Ten Phong FROM HoaDon JOIN Phong ON HoaDon.MaPhong = Pho" +
+                "ng.ID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

@@ -17,7 +17,7 @@ namespace LapTrinhCSharp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-#if true
+#if DEBUG
             Application.Run(new FormMain());
 #else
             Application.Run(new FormSplash());

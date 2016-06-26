@@ -30,6 +30,9 @@
               <Width>1in</Width>
             </TablixColumn>
             <TablixColumn>
+              <Width>1in</Width>
+            </TablixColumn>
+            <TablixColumn>
               <Width>1.33333in</Width>
             </TablixColumn>
           </TablixColumns>
@@ -82,7 +85,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Mã hợp đồng</Value>
+                              <Value>Tên Phòng</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>11pt</FontSize>
@@ -327,6 +330,42 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Tổng</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>#7292cc</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#4c68a2</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox19">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -401,14 +440,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="MaHopDong">
+                    <Textbox Name="Phong">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!MaHopDong.Value</Value>
+                              <Value>=Fields!Phong.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <Color>#4d4d4d</Color>
@@ -418,7 +457,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>MaHopDong</rd:DefaultName>
+                      <rd:DefaultName>Phong</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
@@ -632,6 +671,40 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="TongTien">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!TongTien.Value</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#4d4d4d</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>TongTien</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>#e5e5e5</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="DaThanhToan">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -678,6 +751,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -692,7 +766,7 @@
         </TablixRowHierarchy>
         <DataSetName>DSHoaDon</DataSetName>
         <Height>0.5in</Height>
-        <Width>8.30208in</Width>
+        <Width>9.30208in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -703,10 +777,10 @@
     <Height>0.5in</Height>
     <Style />
   </Body>
-  <Width>8.30208in</Width>
+  <Width>9.30208in</Width>
   <Page>
     <PageHeader>
-      <Height>0.5in</Height>
+      <Height>0.75in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -730,7 +804,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox21</rd:DefaultName>
           <Top>0.08208in</Top>
-          <Height>0.40403in</Height>
+          <Height>0.66792in</Height>
           <Width>8.0625in</Width>
           <Style>
             <Border>
@@ -776,9 +850,9 @@
           <DataField>ID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="MaHopDong">
-          <DataField>MaHopDong</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="MaPhong">
+          <DataField>MaPhong</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="Nam">
           <DataField>Nam</DataField>
@@ -812,14 +886,22 @@
           <DataField>DaThanhToan</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
+        <Field Name="Phong">
+          <DataField>Phong</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TongTien">
+          <DataField>TongTien</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>DataSet</rd:DataSetName>
-        <rd:SchemaPath>E:\My Documents\Visual Studio\QLKTX\LapTrinhCSharp\DataSet.xsd</rd:SchemaPath>
-        <rd:TableName>HoaDon</rd:TableName>
+        <rd:DataSetName>MainDataset</rd:DataSetName>
+        <rd:SchemaPath>D:\Visual Studio\QLKTX\LapTrinhCSharp\MainDataset.xsd</rd:SchemaPath>
+        <rd:TableName>ReportHoaDon</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>HoaDonTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>ReportHoaDonTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

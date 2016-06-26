@@ -32,13 +32,18 @@ namespace LapTrinhCSharp.Forms
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.HopDongBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DataSet = new LapTrinhCSharp.MainDataset();
             this.report = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.HopDongBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.HopDongTableAdapter = new LapTrinhCSharp.MainDatasetTableAdapters.HopDongTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HopDongBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // HopDongBindingSource
+            // 
+            this.HopDongBindingSource.DataMember = "HopDong";
+            this.HopDongBindingSource.DataSource = this.DataSet;
             // 
             // DataSet
             // 
@@ -59,11 +64,6 @@ namespace LapTrinhCSharp.Forms
             this.report.TabIndex = 0;
             this.report.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
-            // HopDongBindingSource
-            // 
-            this.HopDongBindingSource.DataMember = "HopDong";
-            this.HopDongBindingSource.DataSource = this.DataSet;
-            // 
             // HopDongTableAdapter
             // 
             this.HopDongTableAdapter.ClearBeforeFill = true;
@@ -79,8 +79,8 @@ namespace LapTrinhCSharp.Forms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Báo cáo danh sách hợp đồng";
             this.Load += new System.EventHandler(this.FormReportSV_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HopDongBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
