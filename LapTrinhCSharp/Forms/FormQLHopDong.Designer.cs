@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormQLHopDong));
             this.grid = new System.Windows.Forms.DataGridView();
             this.MaHopDong = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,11 +37,14 @@
             this.NgayHetHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SinhVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoNguoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DaHetHan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DaKetThuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnSearchPhong = new System.Windows.Forms.Button();
+            this.btnSearchSV = new System.Windows.Forms.Button();
             this.chk = new System.Windows.Forms.CheckBox();
             this.cmbSV = new System.Windows.Forms.ComboBox();
             this.dtp2 = new System.Windows.Forms.DateTimePicker();
@@ -69,14 +72,14 @@
             this.grid.AllowUserToResizeColumns = false;
             this.grid.AllowUserToResizeRows = false;
             this.grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaHopDong,
@@ -84,17 +87,19 @@
             this.NgayHetHan,
             this.MaPhong,
             this.TenPhong,
+            this.MaSV,
+            this.SinhVien,
             this.SoNguoi,
             this.DaHetHan,
             this.DaKetThuc});
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grid.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grid.DefaultCellStyle = dataGridViewCellStyle2;
             this.grid.Location = new System.Drawing.Point(12, 119);
             this.grid.MultiSelect = false;
             this.grid.Name = "grid";
@@ -138,9 +143,25 @@
             // TenPhong
             // 
             this.TenPhong.DataPropertyName = "Phong";
+            this.TenPhong.FillWeight = 50F;
             this.TenPhong.HeaderText = "Phòng";
             this.TenPhong.Name = "TenPhong";
             this.TenPhong.ReadOnly = true;
+            // 
+            // MaSV
+            // 
+            this.MaSV.DataPropertyName = "MaSV";
+            this.MaSV.HeaderText = "MaSinhVien";
+            this.MaSV.Name = "MaSV";
+            this.MaSV.ReadOnly = true;
+            this.MaSV.Visible = false;
+            // 
+            // SinhVien
+            // 
+            this.SinhVien.DataPropertyName = "SinhVien";
+            this.SinhVien.HeaderText = "Sinh viên";
+            this.SinhVien.Name = "SinhVien";
+            this.SinhVien.ReadOnly = true;
             // 
             // SoNguoi
             // 
@@ -165,7 +186,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnSearch);
+            this.groupBox1.Controls.Add(this.btnSearchPhong);
+            this.groupBox1.Controls.Add(this.btnSearchSV);
             this.groupBox1.Controls.Add(this.chk);
             this.groupBox1.Controls.Add(this.cmbSV);
             this.groupBox1.Controls.Add(this.dtp2);
@@ -184,15 +206,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
             // 
-            // btnSearch
+            // btnSearchPhong
             // 
-            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.Location = new System.Drawing.Point(277, 45);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(26, 21);
-            this.btnSearch.TabIndex = 5;
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnSearchPhong.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchPhong.Image")));
+            this.btnSearchPhong.Location = new System.Drawing.Point(277, 71);
+            this.btnSearchPhong.Name = "btnSearchPhong";
+            this.btnSearchPhong.Size = new System.Drawing.Size(26, 21);
+            this.btnSearchPhong.TabIndex = 5;
+            this.btnSearchPhong.UseVisualStyleBackColor = true;
+            this.btnSearchPhong.Click += new System.EventHandler(this.btnSearchPhong_Click);
+            // 
+            // btnSearchSV
+            // 
+            this.btnSearchSV.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchSV.Image")));
+            this.btnSearchSV.Location = new System.Drawing.Point(277, 45);
+            this.btnSearchSV.Name = "btnSearchSV";
+            this.btnSearchSV.Size = new System.Drawing.Size(26, 21);
+            this.btnSearchSV.TabIndex = 5;
+            this.btnSearchSV.UseVisualStyleBackColor = true;
+            this.btnSearchSV.Click += new System.EventHandler(this.btnSearchSV_Click);
             // 
             // chk
             // 
@@ -237,8 +269,9 @@
             this.cmbPhong.FormattingEnabled = true;
             this.cmbPhong.Location = new System.Drawing.Point(75, 71);
             this.cmbPhong.Name = "cmbPhong";
-            this.cmbPhong.Size = new System.Drawing.Size(228, 21);
+            this.cmbPhong.Size = new System.Drawing.Size(196, 21);
             this.cmbPhong.TabIndex = 2;
+            this.cmbPhong.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.cmbPhong_Format);
             // 
             // txtMaHD
             // 
@@ -390,15 +423,18 @@
         private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.ComboBox cmbSV;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnSearchSV;
+        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHopDong;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayBatDau;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayHetHan;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaPhong;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenPhong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaSV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SinhVien;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoNguoi;
         private System.Windows.Forms.DataGridViewTextBoxColumn DaHetHan;
         private System.Windows.Forms.DataGridViewTextBoxColumn DaKetThuc;
-        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Button btnSearchPhong;
     }
 }

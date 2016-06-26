@@ -7,11 +7,16 @@ namespace LapTrinhCSharp.Forms
 {
     public partial class FormQLPhong : Form
     {
-        public FormQLPhong()
+        public FormQLPhong(bool selectMode = false)
         {
             InitializeComponent();
+            if (selectMode)
+            {
+                btnOK.Visible = true;
+            }
         }
 
+        public int? SelectedItem { get; private set; }
         private void FormMain_Load(object sender, EventArgs e)
         {
             cbNha.DataSource = Models.Nha.All();
@@ -165,6 +170,12 @@ namespace LapTrinhCSharp.Forms
             var ct = new ChiTietVatTu { ID = id};
             ct.Delete();
             LoadVatTu();
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            SelectedItem = FormData.ID;
+            Close();
         }
     }
 }

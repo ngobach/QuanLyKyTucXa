@@ -15,13 +15,13 @@ namespace EzLife
     public partial class HopDong
     {
         public string MaHopDong { get; set; }
-        public string SinhVien { get; set; }
-        public int Phong { get; set; }
+        public string MaSinhVien { get; set; }
+        public int MaPhong { get; set; }
         public System.DateTime NgayBatDau { get; set; }
         public System.DateTime NgayHetHan { get; set; }
         public bool DaKetThuc { get; set; }
     
-        public virtual Phong Phong1 { get; set; }
-        public virtual SinhVien SinhVien1 { get; set; }
+        public virtual Phong Phong { get; set; }
+        public virtual SinhVien SinhVien { get; set; }
     }
 }

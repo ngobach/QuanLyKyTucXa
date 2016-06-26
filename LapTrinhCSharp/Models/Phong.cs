@@ -15,7 +15,7 @@ namespace LapTrinhCSharp.Models
         {
             string query = "SELECT Phong.*, Nha.Ten as Nha FROM Phong JOIN Nha ON Phong.MaNha = Nha.ID";
             if (onlyFree)
-                query += " WHERE (SELECT COUNT(*) FROM HopDong WHERE HopDong.Phong = Phong.ID AND HopDong.DaKetThuc = 1) < Phong.ToiDa";
+                query += " WHERE (SELECT COUNT(*) FROM HopDong WHERE HopDong.Phong = Phong.ID AND HopDong.DaKetThuc = 0) < Phong.ToiDa";
             var table = new DataTable();
             using (var con = DB.GetConnection())
             using (var cmd = new SqlCommand(query, con))

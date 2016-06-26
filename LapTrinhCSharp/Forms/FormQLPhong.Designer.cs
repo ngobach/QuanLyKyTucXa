@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormQLPhong));
             this.gridView = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,13 +52,14 @@
             this.btVTDelete = new System.Windows.Forms.Button();
             this.lstVT = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.chkFree = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtCount = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtNote = new System.Windows.Forms.TextBox();
+            this.txtCount = new System.Windows.Forms.TextBox();
             this.btnVTUpdate = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.chkFree = new System.Windows.Forms.CheckBox();
+            this.btnOK = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -71,14 +72,14 @@
             this.gridView.AllowUserToResizeColumns = false;
             this.gridView.AllowUserToResizeRows = false;
             this.gridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.gridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -86,14 +87,14 @@
             this.Nha,
             this.Ten,
             this.ToiDa});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridView.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridView.DefaultCellStyle = dataGridViewCellStyle4;
             this.gridView.Location = new System.Drawing.Point(12, 36);
             this.gridView.MultiSelect = false;
             this.gridView.Name = "gridView";
@@ -295,51 +296,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Các vật tư";
             // 
-            // chkFree
-            // 
-            this.chkFree.AutoSize = true;
-            this.chkFree.Location = new System.Drawing.Point(13, 13);
-            this.chkFree.Name = "chkFree";
-            this.chkFree.Size = new System.Drawing.Size(124, 17);
-            this.chkFree.TabIndex = 1001;
-            this.chkFree.Text = "Chỉ hiện phòng trống";
-            this.chkFree.UseVisualStyleBackColor = true;
-            this.chkFree.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 308);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Vật tư";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 189);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Số lượng";
-            // 
-            // txtCount
-            // 
-            this.txtCount.Location = new System.Drawing.Point(63, 186);
-            this.txtCount.Name = "txtCount";
-            this.txtCount.Size = new System.Drawing.Size(210, 20);
-            this.txtCount.TabIndex = 2;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 215);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Ghi chú";
-            // 
             // txtNote
             // 
             this.txtNote.Location = new System.Drawing.Point(11, 231);
@@ -347,6 +303,13 @@
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(262, 66);
             this.txtNote.TabIndex = 2;
+            // 
+            // txtCount
+            // 
+            this.txtCount.Location = new System.Drawing.Point(63, 186);
+            this.txtCount.Name = "txtCount";
+            this.txtCount.Size = new System.Drawing.Size(210, 20);
+            this.txtCount.TabIndex = 2;
             // 
             // btnVTUpdate
             // 
@@ -358,11 +321,62 @@
             this.btnVTUpdate.UseVisualStyleBackColor = true;
             this.btnVTUpdate.Click += new System.EventHandler(this.btnVTUpdate_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 215);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Ghi chú";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 189);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Số lượng";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 308);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Vật tư";
+            // 
+            // chkFree
+            // 
+            this.chkFree.AutoSize = true;
+            this.chkFree.Location = new System.Drawing.Point(13, 13);
+            this.chkFree.Name = "chkFree";
+            this.chkFree.Size = new System.Drawing.Size(124, 17);
+            this.chkFree.TabIndex = 1001;
+            this.chkFree.Text = "Chỉ hiện phòng trống";
+            this.chkFree.UseVisualStyleBackColor = true;
+            this.chkFree.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // btnOK
+            // 
+            this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOK.Location = new System.Drawing.Point(346, 9);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.TabIndex = 1002;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Visible = false;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
             // FormQLPhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(711, 487);
+            this.Controls.Add(this.btnOK);
             this.Controls.Add(this.chkFree);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnXoa);
@@ -416,6 +430,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.Button btnVTUpdate;
+        private System.Windows.Forms.Button btnOK;
     }
 }
 

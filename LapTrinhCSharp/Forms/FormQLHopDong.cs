@@ -1,7 +1,12 @@
 ﻿using System;
+using System.Data;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
-using LapTrinhCSharp.Models;
+using EzLife;
+using HopDong = LapTrinhCSharp.Models.HopDong;
+using Phong = LapTrinhCSharp.Models.Phong;
+using SinhVienDB = LapTrinhCSharp.Models.SinhVien;
 
 namespace LapTrinhCSharp.Forms
 {
@@ -14,11 +19,11 @@ namespace LapTrinhCSharp.Forms
 
         private void LoadCombobox()
         {
-            cmbPhong.DataSource = Phong.All();
             cmbPhong.DisplayMember = "Ten";
             cmbPhong.ValueMember = "ID";
+            cmbPhong.DataSource = Phong.All();
 
-            cmbSV.DataSource = SinhVien.All();
+            cmbSV.DataSource = SinhVienDB.All();
             cmbSV.DisplayMember = "HoTen";
             cmbSV.ValueMember = "MaSV";
         }
@@ -134,6 +139,7 @@ namespace LapTrinhCSharp.Forms
             dtp1.Value = (DateTime)row.Cells["NgayBatDau"].Value;
             dtp2.Value = (DateTime)row.Cells["NgayHetHan"].Value;
             cmbPhong.SelectedValue = (int)row.Cells["MaPhong"].Value;
+            cmbSV.SelectedValue = row.Cells["MaSV"].Value;
             chk.Checked = (bool)row.Cells["DaKetThuc"].Value;
         }
 
@@ -142,7 +148,7 @@ namespace LapTrinhCSharp.Forms
             (new FormReportHopDong()).ShowDialog();
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void btnSearchSV_Click(object sender, EventArgs e)
         {
             var form = new FormTimKiemSV();
             form.ShowDialog();
@@ -154,16 +160,37 @@ namespace LapTrinhCSharp.Forms
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            var doc = Novacode.DocX.Load("hopdong.docx");
-            doc.ReplaceText("{name}", "Ngô Xuân bách");
-            doc.ReplaceText("{from}", new DateTime().ToString("dd/MM/yy"));
-            doc.ReplaceText("{to}", new DateTime().ToString("dd/MM/yy"));
-            doc.SaveAs("tmp.docx");
-            var info = new ProcessStartInfo("tmp.docx");
-            info.Verb = "Print";
-            //info.CreateNoWindow = true;
-            //info.WindowStyle = ProcessWindowStyle.Hidden;
-            Process.Start(info);
+            var id = FormData.MaHopDong;
+            using (var db = new DbKTX())
+            {
+                var hd = db.HopDong.First(o => o.MaHopDong == id);
+                var doc = Novacode.DocX.Load("hopdong.docx");
+                doc.ReplaceText("{name}", hd.SinhVien.HoTen);
+                doc.ReplaceText("{from}", hd.NgayBatDau.ToString("dd/MM/yyyy"));
+                doc.ReplaceText("{to}", hd.NgayHetHan.ToString("dd/MM/yyyy"));
+                doc.SaveAs("tmp.docx");
+                var info = new ProcessStartInfo("tmp.docx");
+                info.Verb = "Print";
+                // info.CreateNoWindow = true;
+                // info.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(info);
+            }
+        }
+
+        private void btnSearchPhong_Click(object sender, EventArgs e)
+        {
+            var form = new FormQLPhong(true);
+            form.ShowDialog();
+            if (form.SelectedItem != null)
+            {
+                cmbPhong.SelectedValue = form.SelectedItem;
+            }
+        }
+
+        private void cmbPhong_Format(object sender, ListControlConvertEventArgs e)
+        {
+            var row = (DataRowView) e.ListItem;
+            e.Value = $"{row.Row.Field<string>("Nha")} : {row.Row.Field<string>("Ten")}";
         }
     }
 }

@@ -62,5 +62,10 @@ namespace LapTrinhCSharp.Forms
             MessageBox.Show("Tìm kiếm chính xác sẽ tìm những sinh viên có họ tên khớp với nhập vào.\n" +
                             "Tìm kiểm một phần sẽ tìm những sinh viên có họ tên chỉ khớp một phần với nội dung tìm kiếm!", "Giải thích", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void gridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Close();
+        }
     }
 }

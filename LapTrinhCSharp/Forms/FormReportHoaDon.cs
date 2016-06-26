@@ -12,8 +12,7 @@ namespace LapTrinhCSharp.Forms
 
         private void FormReportSV_Load(object sender, EventArgs e)
         {
-            this.HoaDonTableAdapter.Fill(this.DataSet.HoaDon);
-            this.report.RefreshReport();
+
         }
     }
 }

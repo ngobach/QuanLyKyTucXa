@@ -217,12 +217,30 @@
   <metadata name="btnVTUpdate.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="label6.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtNote.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="txtCount.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="btnVTUpdate.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="btnVTUpdate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAACHSURBVDhPY6A7eFJaagBlkg62bd4Z/aCi8uPToqL5UCHiwccFKtEb9hz5uGn3oRsgQ0hyyf/p
-        DAn/ZzD8fztf5wbIEJBLoFKEAUwzDINcApUiDNA1g/hQKcJgVDOJmkHg/z7W/f9nMXwkS/PUBm2bzZMU
-        /4MNIVUzCEyp1pQHGQLl0hMwMAAAzhuJ9poC26AAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAIdJREFUOE9j
+        oDt4UlpqAGWSDrZt3hn9oKLy49OiovlQIeLBxwUq0Rv2HPm4afehGyBDSHLJ/+kMCf9nMPx/O1/nBsgQ
+        kEugUoQBTDMMg1wClSIM0DWD+FApwmBUM4maQeD/Ptb9/2cxfCRL89QGbZvNkxT/gw0hVTMITKnWlAcZ
+        AuXSEzAwAADOG4n2mgLboAAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="label6.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

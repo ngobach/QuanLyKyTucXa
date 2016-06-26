@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LapTrinhCSharp</RootNamespace>
     <AssemblyName>LapTrinhCSharp</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>C:\publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -95,29 +96,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CTPhong.cs">
-      <DependentUpon>EzLife.tt</DependentUpon>
+    <Compile Include="Forms\TestForm.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EzLife.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EzLife.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EzLife.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EzLife.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EzLife.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EzLife.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="HoaDon.cs">
-      <DependentUpon>EzLife.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HopDong.cs">
-      <DependentUpon>EzLife.tt</DependentUpon>
+    <Compile Include="Forms\TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainDataset.cs">
       <DependentUpon>MainDataset.xsd</DependentUpon>
@@ -212,36 +195,10 @@
     <Compile Include="Models\HopDong.cs" />
     <Compile Include="Models\SinhVien.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Nha.cs">
-      <DependentUpon>EzLife.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Phong.cs">
-      <DependentUpon>EzLife.tt</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QLKTXDataSet.cs">
-      <DependentUpon>QLKTXDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="QLKTXDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLKTXDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="SinhVien.cs">
-      <DependentUpon>EzLife.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>EzLife.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>EzLife.tt</DependentUpon>
-    </Compile>
     <Compile Include="Utils\DB.cs" />
     <Compile Include="Utils\Utils.cs" />
-    <Compile Include="VatTu.cs">
-      <DependentUpon>EzLife.tt</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Forms\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -292,13 +249,10 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EntityDeploy Include="EzLife.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EzLife.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="EzLife.edmx.diagram">
-      <DependentUpon>EzLife.edmx</DependentUpon>
+    <None Include="hoadon.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="hopdong.docx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -324,17 +278,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="QLKTXDataSet.xsc">
-      <DependentUpon>QLKTXDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="QLKTXDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>QLKTXDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="QLKTXDataSet.xss">
-      <DependentUpon>QLKTXDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -365,18 +308,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EzLife.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EzLife.edmx</DependentUpon>
-      <LastGenOutput>EzLife.Context.cs</LastGenOutput>
-      <CustomToolNamespace>EzLife</CustomToolNamespace>
-    </Content>
-    <Content Include="EzLife.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EzLife.edmx</DependentUpon>
-      <LastGenOutput>EzLife.cs</LastGenOutput>
-      <CustomToolNamespace>EzLife</CustomToolNamespace>
-    </Content>
+    <ProjectReference Include="..\EF\EF.csproj">
+      <Project>{59127989-6cb9-45fc-8ed5-9824a504c9b5}</Project>
+      <Name>EF</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

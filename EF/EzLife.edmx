@@ -246,13 +246,13 @@
             <PropertyRef Name="MaHopDong" />
           </Key>
           <Property Name="MaHopDong" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SinhVien" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Phong" Type="Int32" Nullable="false" />
+          <Property Name="MaSinhVien" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaPhong" Type="Int32" Nullable="false" />
           <Property Name="NgayBatDau" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="NgayHetHan" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DaKetThuc" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Phong1" Relationship="Self.FK_HopDong_Phong" FromRole="HopDong" ToRole="Phong" />
-          <NavigationProperty Name="SinhVien1" Relationship="Self.FK_HopDong_SinhVien" FromRole="HopDong" ToRole="SinhVien" />
+          <NavigationProperty Name="Phong" Relationship="Self.FK_HopDong_Phong" FromRole="HopDong" ToRole="Phong" />
+          <NavigationProperty Name="SinhVien" Relationship="Self.FK_HopDong_SinhVien" FromRole="HopDong" ToRole="SinhVien" />
         </EntityType>
         <EntityType Name="Nha">
           <Key>
@@ -361,7 +361,7 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="HopDong">
-              <PropertyRef Name="Phong" />
+              <PropertyRef Name="MaPhong" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -373,7 +373,7 @@
               <PropertyRef Name="MaSV" />
             </Principal>
             <Dependent Role="HopDong">
-              <PropertyRef Name="SinhVien" />
+              <PropertyRef Name="MaSinhVien" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -389,7 +389,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DbKTX" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CTPhong" EntityType="Self.CTPhong" />
           <EntitySet Name="HoaDon" EntityType="Self.HoaDon" />
           <EntitySet Name="HopDong" EntityType="Self.HopDong" />
@@ -429,7 +429,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="KTXModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="KTXModelStoreContainer" CdmEntityContainer="DbKTX">
           <EntitySetMapping Name="CTPhong">
             <EntityTypeMapping TypeName="KTXModel.CTPhong">
               <MappingFragment StoreEntitySet="CTPhong">
@@ -461,8 +461,8 @@
             <EntityTypeMapping TypeName="KTXModel.HopDong">
               <MappingFragment StoreEntitySet="HopDong">
                 <ScalarProperty Name="MaHopDong" ColumnName="MaHopDong" />
-                <ScalarProperty Name="SinhVien" ColumnName="SinhVien" />
-                <ScalarProperty Name="Phong" ColumnName="Phong" />
+                <ScalarProperty Name="MaSinhVien" ColumnName="SinhVien" />
+                <ScalarProperty Name="MaPhong" ColumnName="Phong" />
                 <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
                 <ScalarProperty Name="NgayHetHan" ColumnName="NgayHetHan" />
                 <ScalarProperty Name="DaKetThuc" ColumnName="DaKetThuc" />

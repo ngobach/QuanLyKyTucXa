@@ -64,9 +64,9 @@
             this.txtMaSV = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radExcact = new System.Windows.Forms.RadioButton();
-            this.radPartialy = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
+            this.radPartialy = new System.Windows.Forms.RadioButton();
+            this.radExcact = new System.Windows.Forms.RadioButton();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -154,6 +154,7 @@
             this.gridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridView.Size = new System.Drawing.Size(734, 240);
             this.gridView.TabIndex = 1;
+            this.gridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridView_CellContentDoubleClick);
             this.gridView.SelectionChanged += new System.EventHandler(this.gridView_SelectionChanged);
             // 
             // MaSV
@@ -405,15 +406,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tùy chọn";
             // 
-            // radExcact
+            // button1
             // 
-            this.radExcact.AutoSize = true;
-            this.radExcact.Location = new System.Drawing.Point(7, 20);
-            this.radExcact.Name = "radExcact";
-            this.radExcact.Size = new System.Drawing.Size(93, 17);
-            this.radExcact.TabIndex = 0;
-            this.radExcact.Text = "Tìm chính xác";
-            this.radExcact.UseVisualStyleBackColor = true;
+            this.button1.Location = new System.Drawing.Point(237, 17);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(126, 22);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Giải thích";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // radPartialy
             // 
@@ -427,15 +428,15 @@
             this.radPartialy.Text = "Tìm một phần";
             this.radPartialy.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // radExcact
             // 
-            this.button1.Location = new System.Drawing.Point(237, 17);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 22);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Giải thích";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.radExcact.AutoSize = true;
+            this.radExcact.Location = new System.Drawing.Point(7, 20);
+            this.radExcact.Name = "radExcact";
+            this.radExcact.Size = new System.Drawing.Size(93, 17);
+            this.radExcact.TabIndex = 0;
+            this.radExcact.Text = "Tìm chính xác";
+            this.radExcact.UseVisualStyleBackColor = true;
             // 
             // FormTimKiemSV
             // 

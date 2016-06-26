@@ -1,7 +1,13 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Data.SqlClient;
+using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
+using EzLife;
 
 namespace LapTrinhCSharp.Forms
 {
@@ -15,125 +21,154 @@ namespace LapTrinhCSharp.Forms
         private void QLHopDong_Load(object sender, EventArgs e)
         {
             rdTatca.Checked = true;
-            loadCombo();
-            loadTatca();
+            LoadComboBoxes();
+            LoadGridView();
         }
 
-
-        private void loadTatca()
+        private void LoadGridView()
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT *,(TienPhong+TienDien+TienNuoc+PhuPhi) AS Tongtien FROM HoaDon", DB.GetConnection());
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            Grid.DataSource = dt;
-            rdTatca.Checked = true;
+            Grid.AutoGenerateColumns = false;
+            using (var db = new DbKTX())
+            {
+                IEnumerable<HoaDon> query = db.HoaDon.Include("Phong");
+                if (rdChuaTT.Checked)
+                {
+                    query = query.Where(hd => !hd.DaThanhToan);
+                }
+                else if (rdDaTT.Checked)
+                {
+                    query = query.Where(hd => hd.DaThanhToan);
+                }
+                if (chkPhong.Checked)
+                {
+                    var phong = Convert.ToInt32(cmbFPhong.SelectedValue);
+                    query = query.Where(x => x.MaPhong == phong);
+                }
+                Grid.DataSource = query.Select(x=> new
+                {
+                    ID = x.ID,
+                    Phong = x.Phong.Ten,
+                    Thang = x.Thang,
+                    Nam = x.Nam,
+                    TienPhong = x.TienPhong,
+                    TienDien = x.TienDien,
+                    TienNuoc = x.TienNuoc,
+                    PhuPhi = x.PhuPhi,
+                    TongTien = x.TienPhong + x.TienDien + x.TienNuoc + x.PhuPhi,
+                    DaThanhToan = x.DaThanhToan
+                }).ToList();
+            }
         }
 
-        private void loadChuaTT()
+
+        private void LoadComboBoxes()
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT *,(TienPhong+TienDien+TienNuoc+PhuPhi) AS Tongtien FROM HoaDon WHERE dathanhtoan = 'false'", DB.GetConnection());
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            Grid.DataSource = dt;
+            using (var db = new DbKTX())
+            {
+                cmbPhong.DisplayMember = cmbFPhong.DisplayMember = "Ten";
+                cmbPhong.ValueMember = cmbFPhong.ValueMember = "ID";
+                cmbPhong.DataSource = db.Phong.Include("Nha").Select(x => new {ID = x.ID, Ten = x.Nha.Ten + " : " + x.Ten}).ToList();
+                cmbFPhong.DataSource = db.Phong.Include("Nha").Select(x => new {ID = x.ID, Ten = x.Nha.Ten + " : " + x.Ten}).ToList();
+            }
+
+            cmbThang.Items.AddRange(Enumerable.Range(1, 12).Select(x=>x.ToString()).ToArray());
+            cmbThang.SelectedItem = DateTime.Today.Month.ToString();
+            cmbNam.Items.AddRange(Enumerable.Range(2015, 18).Select(x => x.ToString()).ToArray());
+            cmbNam.SelectedItem = DateTime.Today.Year.ToString();
         }
 
-        private void loadDaTT()
-        {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT *,(TienPhong+TienDien+TienNuoc+PhuPhi) AS Tongtien FROM HoaDon WHERE dathanhtoan='true'", DB.GetConnection());
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            Grid.DataSource = dt;
-        }
-
-
-        private void loadCombo()
-        {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM HopDong", DB.GetConnection());
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            comboMa.DataSource = dt;
-            comboMa.DisplayMember = "MaHopDong";
-            comboMa.ValueMember = "MaHopDong";
-        }
-
-        private void loadform()
+        private void LoadFormData()
         {
             if (Grid.SelectedRows.Count == 0)
                 return;
-            DataGridViewRow row = Grid.SelectedRows[0];
-            txtPhuphi.Text = row.Cells["Phuphi"].Value.ToString();
-            txtTiendien.Text = row.Cells["Tiendien"].Value.ToString();
-            txtTiennuoc.Text = row.Cells["Tiennuoc"].Value.ToString();
-            txtTienphong.Text = row.Cells["Tienphong"].Value.ToString();
-            comboMa.SelectedValue = row.Cells["MaHopDong"].Value;
-            txtNam.Text = row.Cells["Nam"].Value.ToString();
-            txtThang.Text = row.Cells["Thang"].Value.ToString();
-            if (row.Cells["DaThanhToan"].Value.ToString().ToLower().Equals("true"))
+            int id = (int)Grid.SelectedRows[0].Cells[0].Value;
+            using (var db = new DbKTX())
             {
-                checkTT.Checked = true;
-            }
-            else
-            {
-                checkTT.Checked = false;
+                var hd = db.HoaDon.First(x => x.ID == id);
+                cmbPhong.SelectedValue = hd.MaPhong;
+                cmbNam.SelectedItem = hd.Nam.ToString();
+                cmbThang.SelectedItem = hd.Thang.ToString();
+                checkTT.Checked = hd.DaThanhToan;
+
+                txtPhuphi.Text = hd.PhuPhi.ToString();
+                txtTiendien.Text = hd.TienDien.ToString();
+                txtTiennuoc.Text = hd.TienNuoc.ToString();
+                txtTienphong.Text = hd.TienPhong.ToString();
             }
         }
 
         private void Grid_SelectionChanged(object sender, EventArgs e)
         {
-            loadform();
+            LoadFormData();
         }
+
+        private void FillData(HoaDon hd)
+        {
+            hd.MaPhong = (int) cmbPhong.SelectedValue;
+            hd.Thang = Convert.ToInt32(cmbThang.SelectedItem);
+            hd.Nam = Convert.ToInt32(cmbNam.SelectedItem);
+            hd.TienDien = Convert.ToDouble(txtTiendien.Text);
+            hd.TienNuoc = Convert.ToDouble(txtTiennuoc.Text);
+            hd.TienPhong = Convert.ToDouble(txtTienphong.Text);
+            hd.PhuPhi = Convert.ToDouble(txtPhuphi.Text);
+            hd.DaThanhToan = checkTT.Checked;
+        }
+        private HoaDon FormData
+        {
+            get
+            {
+              return new HoaDon
+              {
+                  MaPhong = (int)cmbPhong.SelectedValue,
+                  Thang = Convert.ToInt32(cmbThang.SelectedItem),
+                  Nam = Convert.ToInt32(cmbNam.SelectedItem),
+                  TienDien = Convert.ToDouble(txtTiendien.Text),
+                  TienNuoc = Convert.ToDouble(txtTiennuoc.Text),
+                  TienPhong = Convert.ToDouble(txtTienphong.Text),
+                  PhuPhi = Convert.ToDouble(txtPhuphi.Text),
+                  DaThanhToan = checkTT.Checked
+              };
+            }
+        }
+
+        
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO Hoadon (MaHopDong, Thang, Nam, Tienphong, Tiennuoc, Tiendien, phuphi, dathanhtoan, chitiet) VALUES (@mahd,@thang,@nam,@tienphong,@tiennuoc,@tiendien,@phuphi,@datt,@chitiet)", DB.GetConnection());
-            cmd.Parameters.AddWithValue("@mahd", comboMa.SelectedValue);
-            cmd.Parameters.AddWithValue("@thang", txtThang.Text);
-            cmd.Parameters.AddWithValue("@nam", txtNam.Text);
-            cmd.Parameters.AddWithValue("@tienphong", txtTienphong.Text);
-            cmd.Parameters.AddWithValue("@tiennuoc", txtTiennuoc.Text);
-            cmd.Parameters.AddWithValue("@tiendien", txtTiendien.Text);
-            cmd.Parameters.AddWithValue("@phuphi", txtPhuphi.Text);
-            cmd.Parameters.AddWithValue("@chitiet", DBNull.Value);
-            cmd.Parameters.AddWithValue("@datt", checkTT.Checked);
-            try
+            using (var db = new DbKTX())
             {
-                cmd.ExecuteNonQuery();
-                loadTatca();
+                db.HoaDon.Add(FormData);
+                db.SaveChanges();
             }
-            catch
-            {
-                MessageBox.Show("Hóa đơn này đã tồn tại!", "Thông báo");
-            }
+            LoadGridView();
         }
 
         private void btnCapnhat_Click(object sender, EventArgs e)
         {
-            string mahd = Grid.SelectedRows[0].Cells["MaHopDong"].Value.ToString();
-            string nam = Grid.SelectedRows[0].Cells["nam"].Value.ToString();
-            string thang = Grid.SelectedRows[0].Cells["thang"].Value.ToString();
-            SqlCommand cmd = new SqlCommand("UPDATE HoaDon SET MaHopDong=@mahd, Thang=@thang, Nam=@nam, Tienphong=@tienphong, Tiennuoc=@tiennuoc, Tiendien=@tiendien, Phuphi=@phuphi, dathanhtoan=@datt WHERE MaHopDong=@mahdcu AND Thang=@thangcu AND Nam=@namcu",DB.GetConnection());
-            cmd.Parameters.AddWithValue("@mahd", comboMa.SelectedValue);
-            cmd.Parameters.AddWithValue("@thang", txtThang.Text);
-            cmd.Parameters.AddWithValue("@nam", txtNam.Text);
-            cmd.Parameters.AddWithValue("@tienphong", txtTienphong.Text);
-            cmd.Parameters.AddWithValue("@tiennuoc", txtTiennuoc.Text);
-            cmd.Parameters.AddWithValue("@tiendien", txtTiendien.Text);
-            cmd.Parameters.AddWithValue("@phuphi", txtPhuphi.Text);
-            cmd.Parameters.AddWithValue("@datt", checkTT.Checked);
-            cmd.Parameters.AddWithValue("@mahdcu", mahd);
-            cmd.Parameters.AddWithValue("@thangcu", thang);
-            cmd.Parameters.AddWithValue("@namcu", nam);
-            cmd.ExecuteNonQuery();
-            loadTatca();
+            if (Grid.SelectedRows.Count == 0)
+                return;
+            var id = (int)Grid.SelectedRows[0].Cells[0].Value;
+            using (var db = new DbKTX())
+            {
+                var hd = db.HoaDon.First(x => x.ID == id);
+                FillData(hd);
+                db.SaveChanges();
+            }
+            LoadGridView();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string id = Grid.SelectedRows[0].Cells["ID"].Value.ToString();
-            SqlCommand cmd = new SqlCommand("DELETE FROM Hoadon WHERE id=@id",DB.GetConnection());
-            cmd.Parameters.AddWithValue("@id", id);
-            cmd.ExecuteNonQuery();
-            loadTatca();
+            if (Grid.SelectedRows.Count == 0)
+                return;
+            using (var db = new DbKTX())
+            {
+                var listIds = (from object r in Grid.SelectedRows select (int)((DataGridViewRow)r).Cells[0].Value).ToList();
+                var toRemove = db.HoaDon.Where(x => listIds.Contains(x.ID));
+                db.HoaDon.RemoveRange(toRemove);
+                db.SaveChanges();
+            }
+            LoadGridView();
         }
 
         private void btnBaocao_Click(object sender, EventArgs e)
@@ -141,25 +176,69 @@ namespace LapTrinhCSharp.Forms
             (new FormReportHoaDon()).ShowDialog();
         }
 
-        private void rdTatca_Click(object sender, EventArgs e)
+        private void radChecked(object sender, EventArgs e)
         {
-            rdTatca.Checked = true;
-            loadTatca();
+            LoadGridView();
         }
 
-        private void rdChuaTT_Click(object sender, EventArgs e)
+        private void btnGen_Click(object sender, EventArgs e)
         {
-            rdChuaTT.Checked = true;
-            loadChuaTT();
+            var rand = new Random();
+            using (var db = new DbKTX())
+            {
+                foreach (var phong in db.Phong)
+                {
+                    for (var thang=1;thang <= 12;thang++)
+                    db.HoaDon.Add(new HoaDon
+                    {
+                        MaPhong = phong.ID,
+                        ChiTiet = "Chi tiết!",
+                        DaThanhToan = rand.Next()%2==0,
+                        Thang = thang,
+                        Nam = DateTime.Today.Year,
+                        TienPhong = Math.Round(1000000 * rand.NextDouble()),
+                        TienDien = Math.Round(200000 * rand.NextDouble()),
+                        TienNuoc = Math.Round(100000 * rand.NextDouble()),
+                        PhuPhi = Math.Round(50000 * rand.NextDouble())
+                    });
+                }
+                db.SaveChanges();
+            }
         }
 
-        private void rdDaTT_Click(object sender, EventArgs e)
+        private void cmbFPhong_SelectedIndexChanged(object sender, EventArgs e)
         {
-            rdDaTT.Checked = true;
-            loadDaTT();
+            if (chkPhong.Checked)
+                LoadGridView();
         }
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (Grid.SelectedRows.Count == 0)
+                return;
+            var id = (int)Grid.SelectedRows[0].Cells[0].Value;
+            using (var db = new DbKTX())
+            {
+                var hd = db.HoaDon.First(o => o.ID == id);
+                var doc = Novacode.DocX.Load("hoadon.docx");
+                doc.ReplaceText("{hoadon}", hd.ID.ToString("D8"));
+                doc.ReplaceText("{room}", hd.Phong.Nha.Ten + " " + hd.Phong.Ten);
+                doc.ReplaceText("{ngay}", DateTime.Today.ToString("dd/MM/yyyy"));
+
+                doc.ReplaceText("{tienphong}", hd.TienPhong.ToString("n0"));
+                doc.ReplaceText("{tiennuoc}", hd.TienNuoc.ToString("n0"));
+                doc.ReplaceText("{tiendien}", hd.TienDien.ToString("n0"));
+                doc.ReplaceText("{phuphi}", hd.PhuPhi.ToString("n0"));
+                doc.ReplaceText("{tong}", (hd.TienPhong + hd.TienNuoc + hd.PhuPhi).ToString("n0"));
 
 
+                doc.SaveAs("tmp.docx");
+                var info = new ProcessStartInfo("tmp.docx");
+                info.Verb = "Print";
+                // info.CreateNoWindow = true;
+                // info.WindowStyle = ProcessWindowStyle.Hidden;
+                Process.Start(info);
+            }
+        }
     }
 }
